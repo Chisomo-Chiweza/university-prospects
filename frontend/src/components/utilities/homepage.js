@@ -9,7 +9,9 @@ function Homepage(props) {
                 <img src={logo} alt="Logo" className="object-scale-down object-top"></img>
             </div>
 
-            <div className="flex flex-row justify-center">{props.content}</div>
+            <div className="flex flex-row justify-center">
+                {props.content}
+            </div>
 
         </div>
     );
