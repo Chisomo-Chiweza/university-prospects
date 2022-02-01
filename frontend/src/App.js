@@ -1,10 +1,11 @@
-import Home from "./components/views/home";
+import University from "./components/views/university/public-uni";
+
 
 function App() {
 
   return (
 
-    <Home />
+    <University />
     
   );
 }
