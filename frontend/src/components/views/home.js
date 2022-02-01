@@ -5,10 +5,11 @@ import Arrow from "../assets/right-arrow-dark.png";
 function Home() {
 
     const content = 
+    
     <div className="flex flex-col justify-center">
 
         <h1 className="mb-20 text-ivory text-7xl font-bold">See your top programs.</h1>
-        <Button bgcolor="bg-ivory" textcolor="text-space" name="Get started" arrow={Arrow} />
+        <Button bgcolor="bg-ivory" textcolor="text-space" route="" name="Get started" arrow={Arrow} />
 
     </div>
     
