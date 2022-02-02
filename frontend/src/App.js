@@ -1,12 +1,8 @@
-import University from "./components/views/university/public-uni";
-
-
 function App() {
-
   return (
-
-    <University />
-    
+    <div className="bg-space">
+      <h1 className="text-4xl text-jonquil">University Prospects</h1>
+    </div>
   );
 }
 
