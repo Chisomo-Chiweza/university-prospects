@@ -1,11 +1,9 @@
-import Results from "./components/views/results";
+import Homepage from "./components/utilities/homepage";
 
 function App() {
+
   return (
-    <Results />
-    // <div className="bg-space">
-    //   <h1 className="text-4xl text-jonquil">University Prospects</h1>
-    // </div>
+    <Homepage/>
   );
  }
 
