@@ -1,4 +1,3 @@
-
 function NavBar(props) {
 
     return(
