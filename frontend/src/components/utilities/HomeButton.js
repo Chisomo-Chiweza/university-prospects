@@ -1,15 +1,11 @@
-import Arrow from '../assets/right-arrow-dark.png';
+import Arrow from "../assets/right-arrow-dark.png";
 
 function HomeButton() {
-
-    return(
-
-        <button className="flex flex-row gap-4 justify-center p-3 px-8 mx-auto bg-ivory rounded-md text-space text-xl font-bold hover:-translate-y-0.5 hover:scale-110 duration-100">
-            Get Started <img src={Arrow} alt="right arrow"></img>
-        </button>
-
-    );
-
+  return (
+    <button className="mx-auto flex flex-row justify-center gap-4 rounded-md bg-ivory p-3 px-8 text-xl font-bold text-space duration-100 hover:-translate-y-0.5 hover:scale-110">
+      Get Started <img src={Arrow} alt="right arrow"></img>
+    </button>
+  );
 }
 
 export default HomeButton;
