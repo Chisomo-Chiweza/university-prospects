@@ -1,11 +1,15 @@
-import SelectUniversities from "./components/views/university/SelectUniversities";
+import Home from "./components/views/Home";
 
 function App() {
+
   return (
+    
     <div>
-      <SelectUniversities />
+      <Home />
     </div>
+
   );
+
 }
 
 export default App;
