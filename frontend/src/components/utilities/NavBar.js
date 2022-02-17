@@ -19,7 +19,9 @@ function Navbar() {
                     >
                         <div className="flex items-center py-4 px-2">
                             <img src={ Logo } alt="Logo" class="w-10 mr-2" />
-                            <span class="font-semibold text-jonquil text-lg">University Prospects</span>
+                            <span class="font-semibold text-jonquil text-lg">
+                                <span className="text-space">University</span> Prospects
+                            </span>
                         </div>
 
                     </NavLink>
@@ -38,7 +40,7 @@ function Navbar() {
                         <NavLink
                             className="py-2 font-medium text-space active:text-jonquil"
                             activeClassName="is-active"
-                            to="/"
+                            to="/steptwo"
                             exact
                         >
                             See your top programs

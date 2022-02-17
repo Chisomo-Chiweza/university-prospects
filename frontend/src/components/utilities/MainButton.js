@@ -6,7 +6,7 @@ export default function MainButton(props) {
 
         <Link to={props.link}>
 
-            <button className="mx-auto px-4 py-2 bg-space border rounded drop-shadow-sm font-semibold text-white text-xl">
+            <button className="mx-auto px-4 py-2 bg-space border rounded drop-shadow-sm font-semibold text-white text-base md:text-xl">
                 Get Started
             </button>
 

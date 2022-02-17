@@ -7,7 +7,7 @@ export default function NextButton(props) {
 
         <Link to={props.link}>
 
-            <button className="mx-auto px-4 bg-white border rounded drop-shadow-sm">
+            <button className="mx-auto px-4 bg-white border rounded drop-shadow-sm mt-4">
                 <img src={Logo} alt="right arrow" className="w-8" />
             </button>
 

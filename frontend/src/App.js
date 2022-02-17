@@ -1,14 +1,12 @@
-import Home from "./components/views/Home";
+import Home from "./components/routes/Home";
 
 function App() {
 
-  return (
-    
-    <div>
-      <Home />
-    </div>
+    return (
 
-  );
+        <Home />
+
+    );
 
 }
 
