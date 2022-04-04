@@ -1,64 +1,42 @@
 import React from "react";
+import axios from "axios";
 import Container from "../utilities/Container";
 import NextButton from "../utilities/NextButton";
 
 class Universities extends React.Component {
+
     constructor(props) {
         super(props);
 
         this.state = {
-            universities: [
-                {
-                    name: "Kamuzu University of Health Sciences",
-                    code: "KUHES",
-                    isSelected: false,
-                },
-                {
-                    name: "Malawi University of Business and Applied Sciences",
-                    code: "MUBAS",
-                    isSelected: false,
-                },
-                {
-                    name: "University of Malawi",
-                    code: "UNIMA",
-                    isSelected: false,
-                },
-                {
-                    name: "Malawi University of Science and Technology",
-                    code: "MUST",
-                    isSelected: false,
-                },
-                {
-                    name: "Mzuzu University",
-                    code: "MZUNI",
-                    isSelected: false,
-                },
-                {
-                    name: "Lilongwe University of Agriculture and Natural Resources",
-                    code: "UNIMA",
-                    isSelected: false,
-                },
-            ],
 
+            universities: [],
             selectedUniversities: [],
-        };
+            dataIsLoaded: false
 
-        this.selectAll = this.selectAll.bind(this);
+        };
 
     }
 
-    selectAll(event) {
-        let selectedUniversities = this.state.universities;
-        selectedUniversities.forEach(
-            (selectedUniversity) =>
-                (selectedUniversity.isSelected = event.target.checked)
-        );
-        this.setState({ universities: selectedUniversities });
+    componentDidMount() {
+
+        axios.get("https://university-prospects.herokuapp.com/universities")
+            .then((response) => {
+                console.log(response);
+                this.setState({
+                    universities: response.data,
+                    dataIsLoaded: true
+                });
+            });
+
     }
 
     render() {
+
+        const { universities, dataIsLoaded } = this.state;
+
         return (
-            
+
             <Container>
 
                 <div className="mx-auto p-6 bg-ivory border rounded drop-shadow-md">
@@ -68,25 +46,13 @@ class Universities extends React.Component {
                             Choose which public university you are interested in: (Select all
                             that apply)
                         </p>
-
-                        {/* <div className="mb-1">
-                            <input
-                                type="checkbox"
-                                id="all"
-                                className="mr-2 h-3 w-3 rounded-sm accent-space"
-                                onClick={this.selectAll}
-                            />
-                            <label className="text-base font-semibold" for="all">
-                                Select all
-                            </label>
-                        </div> */}
-
-                        {this.state.universities.map((university) => (
+                        
+                        {universities.map((university) => (
 
                             <div className="mb-1">
                                 <input
                                     type="checkbox"
-                                    id={university.code}
+                                    id={university.id}
                                     className="mr-2 h-3 w-3 rounded-sm accent-space"
                                 />
                                 <label className="text-base" for={university.code}>
