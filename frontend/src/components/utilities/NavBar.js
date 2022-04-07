@@ -13,9 +13,7 @@ function Navbar() {
 
                     <NavLink
                         className="flex space-x-7"
-                        activeClassName=""
                         to="/"
-                        exact
                     >
                         <div className="flex items-center py-4 px-2">
                             <img src={ Logo } alt="Logo" class="w-10 mr-2" />
@@ -30,18 +28,14 @@ function Navbar() {
 
                         <NavLink
                             className="py-2 font-medium text-space active:text-jonquil"
-                            activeClassName=""
                             to="/"
-                            exact
                         >
                             Home
                         </NavLink>
 
                         <NavLink
                             className="py-2 font-medium text-space active:text-jonquil"
-                            activeClassName="is-active"
-                            to="/steptwo"
-                            exact
+                            to="/enter-grades"
                         >
                             See your top programs
                         </NavLink>
