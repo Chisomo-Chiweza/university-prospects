@@ -24,8 +24,9 @@ function SelectSubjects(props) {
                     {
                         load ?
                             props.curriculumSubjects.filter(function (subject) { return subject.discipline === "Science" }).map(subject => (
+                                
                                 <div>
-
+                
                                     <input type="checkbox" id={subject.id} name={subject.title} value={subject.title} className="mr-2 ml-10" onChange={props.onChange} />
                                     <label for="1">{subject.title}</label><br />
 

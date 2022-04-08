@@ -43,7 +43,6 @@ class EnterGrades extends Component {
         this.previousStep = this.previousStep.bind(this);
         this.getPreviousButton = this.getPreviousButton.bind(this);
         this.getNextButton = this.getNextButton.bind(this);
-        this.handleSubjectsInput = this.handleSubjectsInput.bind(this);
         this.handleGradesInput = this.handleSubjectsInput.bind(this);
         this.generateButton = this.generateButton.bind(this);
         this.generateStep = this.generateStep.bind(this);
@@ -103,18 +102,36 @@ class EnterGrades extends Component {
 
     }
 
-    
-    handleSubjectsInput(event) {
+    handleCurriculum = (event) =>{
+
+        let selected = event.target.value
         this.setState({
-            selectedSubjects: [this.state.selectedSubjects, ...event.target.value]
-        }, console.log(this.state.selectedSubjects))
+            selectedCurriculum: selected
+        })
+        console.log(this.state.selectedCurriculum)
     }
 
-    handleGradesInput(event) {
-        event.preventDefault()
+    handleSubjectsInput = (event) =>{
+
+        let selected = event.target.name
+        let subs = this.state.selectedSubjects
+        subs.push(selected)
         this.setState({
-            grades: [...this.state.grades, event.target.value]
+            selectedSubjects: subs
         })
+        console.log(this.state.selectedSubjects)
+    }
+
+    handleGradesInput = (event) =>{
+
+        let input = event.target.value
+        console.log(input)
+        let subs = this.state.grades
+        subs.push(input)
+        this.setState({
+            grades: subs
+        })
+        console.log(this.state.grades)
     }
 
     validateField(fieldName, value) {
@@ -269,6 +286,7 @@ class EnterGrades extends Component {
                                 currentStep={currentStep}
                                 curriculums={curriculums}
                                 isLoaded={dataIsLoaded}
+                                onClick={this.handleCurriculum}
                             />
                             <SelectSubjects
                                 currentStep={currentStep}
@@ -281,6 +299,7 @@ class EnterGrades extends Component {
                                 currentStep={currentStep}
                                 selectedSubjects={selectedSubjects}
                                 isLoaded={dataIsLoaded}
+                                onChange={this.handleGradesInput}
                                 animate={styles.fadeIn}
                             />
 

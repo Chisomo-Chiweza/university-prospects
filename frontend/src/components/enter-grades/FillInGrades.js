@@ -28,8 +28,8 @@ function FillinGrades(props) {
                             props.selectedSubjects.map(subject => (
 
                                 <div>
-                                    <label for={subject.id} className="text-sm font-semibold">{subject.title}</label>
-                                    <input type="text" id={subject.id} name={subject.title} className="w-full border-2 rounded-md p-1 mb-2 border-yellow-400 bg-yellow-100" /><br />
+                                    <label for={subject} className="text-sm font-semibold">{subject}</label>
+                                    <input type="number" id={subject} name={subject} className="w-full border-2 rounded-md p-1 mb-2 border-yellow-400 bg-yellow-100" onChange={props.onChange}/><br />
                                 </div>
 
                             )) :
