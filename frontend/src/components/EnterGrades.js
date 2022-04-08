@@ -24,6 +24,7 @@ class EnterGrades extends Component {
             curriculums: [],
             selectedCurriculum: 0,
             subjects: [],
+            programmes: [],
             selectedSubjects: [],
             universities: [],
             grades: [],
@@ -88,15 +89,32 @@ class EnterGrades extends Component {
                 })
             })
 
+        // Get programmes
+        axios.get(`https://university-prospects.herokuapp.com/programmes`)
+            .then((response) => {
+                console.log("successfully retrieved programmes");
+                this.setState({
+                    programmes: response.data,
+                    dataIsLoaded: true
+                }, () => {
+                    console.log(this.state.programmes)
+                })
+            })
+
     }
 
     
-    handleSubjectsInput() {
-
+    handleSubjectsInput(event) {
+        this.setState({
+            selectedSubjects: [this.state.selectedSubjects, ...event.target.value]
+        }, console.log(this.state.selectedSubjects))
     }
 
-    handleGradesInput() {
-
+    handleGradesInput(event) {
+        event.preventDefault()
+        this.setState({
+            grades: [...this.state.grades, event.target.value]
+        })
     }
 
     validateField(fieldName, value) {
@@ -256,6 +274,7 @@ class EnterGrades extends Component {
                                 currentStep={currentStep}
                                 curriculumSubjects={subjects}
                                 isLoaded={dataIsLoaded}
+                                onChange={this.handleSubjectsInput}
                                 animate={styles.fadeIn}
                             />
                             <FillinGrades

@@ -29,7 +29,7 @@ function FillinGrades(props) {
 
                                 <div>
                                     <label for={subject.id} className="text-sm font-semibold">{subject.title}</label>
-                                    <input type="text" id={subject.id} name={subject.name} className="w-full border-2 rounded-md p-1 mb-2 border-yellow-400 bg-yellow-100" /><br />
+                                    <input type="text" id={subject.id} name={subject.title} className="w-full border-2 rounded-md p-1 mb-2 border-yellow-400 bg-yellow-100" /><br />
                                 </div>
 
                             )) :
