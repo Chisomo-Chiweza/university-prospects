@@ -16,8 +16,8 @@ function Navbar() {
                         to="/"
                     >
                         <div className="flex items-center py-4 px-2">
-                            <img src={ Logo } alt="Logo" class="w-10 mr-2" />
-                            <span class="font-semibold text-jonquil text-lg">
+                            <img src={ Logo } alt="Logo" className="w-10 mr-2" />
+                            <span className="font-semibold text-jonquil text-lg">
                                 <span className="text-space">University</span> Prospects
                             </span>
                         </div>
@@ -49,9 +49,9 @@ function Navbar() {
                                 className="w-6 h-6 text-space"
                                 x-show="!showMenu"
                                 fill="none"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
                                 viewBox="0 0 24 24"
                                 stroke="currentColor"
                             >
