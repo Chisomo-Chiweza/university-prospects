@@ -1,7 +1,7 @@
 // Import dependencies
 import { Component } from 'react';
 import axios from 'axios';
-import Subjects from './generate/Subjects';
+import Subjects from './Subjects';
 
 class TestGeneration extends Component {
 
@@ -34,7 +34,7 @@ class TestGeneration extends Component {
     handleCurriculum(event) {
 
         event.preventDefault();
-        this.setState({ selectedCurriculum: event.target.value }, () => { console.log(this.state.selectedCurriculum) });
+        this.setState({ selectedCurriculum: event.target.value });
 
     }
 

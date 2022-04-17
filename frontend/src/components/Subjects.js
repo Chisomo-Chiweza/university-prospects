@@ -71,7 +71,6 @@ class Subjects extends Component {
 
         this.setState({ selectedSubjects: selectedSubjects });
         this.setState({ loadGrades: true });
-        console.log(this.state.selectedSubjects);
     
     }
 
