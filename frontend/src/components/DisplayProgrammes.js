@@ -28,7 +28,7 @@ class DisplayProgrammes extends Component {
             let { recommendedProgrammes, subjects, programmes } = this.state;
             recommendedProgrammes = generateProgrammes(subjects, programmes);
             this.setState({ recommendedProgrammes: recommendedProgrammes })
-        
+
         }
 
         getProgrammes();
@@ -43,6 +43,8 @@ class DisplayProgrammes extends Component {
         return (
 
             <div>
+
+                <button onClick={this.props.onClick} className="mt-10 bg-blue-700 text-white px-4 py-1 rounded mx-auto mr-4">Back</button>
 
                 <h1 className="mt-4  mb-6 font-semibold text-lg">Programmes</h1>
 

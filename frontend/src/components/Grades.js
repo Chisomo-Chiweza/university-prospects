@@ -9,36 +9,63 @@ class Grades extends Component {
         this.state = {
             subjects: this.props.subjects,
             subjectsWithGrades: [],
-            loadProgrammes: false
+            loadProgrammes: false,
         }
 
-        this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.previous = this.previous.bind(this);
 
     }
 
-    handleChange(event) {
+    previous(event) {
 
         event.preventDefault();
 
-        const subjectId = document.getElementById(event.target.id);
-        const { subjects, subjectsWithGrades } = this.state;
-
-        const subject = subjects.find(subject => subject.id === parseInt(subjectId.id));
-        subject.grade = event.target.value;
-
-
-        subjectsWithGrades.push(subject);
-        this.setState({ subjectsWithGrades: subjectsWithGrades });
-        console.log(subjectsWithGrades);
+        this.setState({
+            loadProgrammes: false,
+            subjectsWithGrades: []
+        })
 
     }
 
     handleSubmit(event) {
-        
+
         event.preventDefault();
-        this.setState({ loadProgrammes: true });
-        alert('Your grades have been submitted!');
+
+        const ids = [];
+        const { subjects, subjectsWithGrades } = this.state;
+
+        for (let i = 0; i < subjects.length; i++) {
+
+            const subject = subjects[i];
+            ids.push(subject.id)
+
+        }
+
+        for (let i = 0; i < ids.length; i++) {
+
+            const subjectId = ids[i];
+            const input = document.getElementById(`input # ${subjectId}`);
+            let subject = subjects.find(subject => subject.id === subjectId);
+            subject.grade = input.value
+            subjectsWithGrades.push(subject);
+
+        }
+
+        this.setState({
+            subjectsWithGrades: subjectsWithGrades,
+            loadProgrammes: true
+        })
+
+        for (let i = 0; i < ids.length; i++) {
+
+            const subjectId = ids[i];
+            const input = document.getElementById(`input # ${subjectId}`);
+            input.value = '';
+
+        }
+
+        console.log(this.state.subjectsWithGrades);
 
     }
 
@@ -56,17 +83,18 @@ class Grades extends Component {
                     {subjects.map((subject, index) => (
 
                         <div key={index}>
-                            <label key={subject.name} htmlFor={subject.name} className="text-sm">{subject.name}</label><br />
-                            <input key={subject.id} id={subject.id} onChange={this.handleChange} type="number" className="p-1 rounded border border-yellow-500 bg-yellow-300" />
+                            <label key={subject.name} htmlFor={subject.id} className="text-sm">{subject.name}</label><br />
+                            <input key={subject.id} id={`input # ${subject.id}`} type="text" className="p-1 rounded border border-yellow-500 bg-yellow-300" />
                         </div>
 
                     ))}
 
-                    <button type="submit" className="mt-10 bg-green-500 text-black px-4 py-1 rounded mx-auto">Submit</button>
+                    <button onClick={this.props.onClick} className="mt-10 bg-blue-700 text-white px-4 py-1 rounded mx-auto mr-4">Back</button>
+                    <button type="submit" className="mt-10 bg-green-700 text-white px-4 py-1 rounded mx-auto">Submit</button>
 
                 </form>
 
-                { loadProgrammes ? <DisplayProgrammes finalSubjects={subjectsWithGrades} /> : null }
+                {loadProgrammes ? <DisplayProgrammes finalSubjects={subjectsWithGrades} onClick={this.previous} /> : null}
 
             </div>
 

@@ -14,6 +14,7 @@ class TestGeneration extends Component {
         };
 
         this.handleCurriculum = this.handleCurriculum.bind(this);
+        this.previous = this.previous.bind(this);
 
     }
 
@@ -28,6 +29,16 @@ class TestGeneration extends Component {
         }
 
         getCurriculums();
+
+    }
+
+    previous(event) {
+
+        event.preventDefault();
+        this.setState({
+            loadGrades: false,
+            selectedCurriculum: null
+        })
 
     }
 
@@ -64,7 +75,7 @@ class TestGeneration extends Component {
                 }
 
                 {
-                    selectedCurriculum != null ? <Subjects curriculumId={selectedCurriculum} /> : null
+                    selectedCurriculum != null ? <Subjects curriculumId={selectedCurriculum} onClick={this.previous}/> : null
 
                 }
 
