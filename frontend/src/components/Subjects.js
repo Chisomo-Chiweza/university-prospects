@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import axios from 'axios';
 import Grades from './Grades';
+import Errors from './validation/Errors';
 
 class Subjects extends Component {
 
@@ -8,10 +9,13 @@ class Subjects extends Component {
 
         super(props);
         this.state = {
-            data: [],
+
             curriculumSubjects: [],
             selectedSubjects: [],
-            loadGrades: false
+            errorCode: 0,
+            loadGrades: false,
+            numberOfSubjects: 0
+
         }
 
         this.handleSelection = this.handleSelection.bind(this);
@@ -35,6 +39,61 @@ class Subjects extends Component {
 
     }
 
+    isValid(event, valid) {
+
+        event.preventDefault();
+
+        let isValid = true;
+        let { selectedSubjects, numberOfSubjects } = this.state;
+        numberOfSubjects = selectedSubjects.length;
+        console.log(numberOfSubjects);
+
+        if (selectedSubjects.length < 6) {
+
+            this.setState({
+                errorCode: 2,
+                numberOfSubjects: numberOfSubjects
+            })
+
+            while(selectedSubjects.length > 0){
+                selectedSubjects.pop();
+            }
+
+            isValid = false;
+
+        }
+
+        if (selectedSubjects.length > 6) {
+
+            this.setState({
+                errorCode: 3,
+                numberOfSubjects: numberOfSubjects
+            })
+
+            while(selectedSubjects.length > 0){
+                selectedSubjects.pop();
+            }
+
+            isValid = false;
+
+        }
+
+        if (valid) {
+
+            this.setState({
+                errorCode: 0,
+                numberOfSubjects: 0
+            })
+
+            isValid = true;
+
+        }
+
+        return isValid;
+
+    }
+
+
     handleSelection(event) {
 
         event.preventDefault();
@@ -43,14 +102,32 @@ class Subjects extends Component {
         const { curriculumSubjects } = this.state;
         let checkedItems = [];
         let selectedSubjects = this.state.selectedSubjects;
-    
+
+        if (ids.length > 0) {
+            while(ids.length > 0){
+                ids.pop()
+            }
+        }
+
+        if (checkedItems.length > 0) {
+            while(checkedItems.length > 0){
+                checkedItems.pop()
+            }
+        }
+
+        if (selectedSubjects > 0) {
+            while(selectedSubjects > 0){
+                selectedSubjects.pop()
+            }
+        }
+
         for (let i = 0; i < curriculumSubjects.length; i++) {
 
             const subject = curriculumSubjects[i];
             ids.push(subject.id)
 
         }
-
+        
         for (let i = 0; i < ids.length; i++) {
 
             const id = ids[i];
@@ -73,9 +150,17 @@ class Subjects extends Component {
 
         }
 
+        if (!this.isValid(event)) {
+            return
+        } else {
+            this.isValid(event, true);
+        }
+
         this.setState({ selectedSubjects: selectedSubjects });
         this.setState({ loadGrades: true });
-    
+
+        console.log(this.state.selectedSubjects.length);
+
     }
 
     previous(event) {
@@ -91,7 +176,7 @@ class Subjects extends Component {
 
     render() {
 
-        const { curriculumSubjects, loadGrades, selectedSubjects } = this.state;
+        const { curriculumSubjects, loadGrades, selectedSubjects, errorCode, numberOfSubjects } = this.state;
 
         return (
 
@@ -99,18 +184,34 @@ class Subjects extends Component {
 
                 <h1 className="mt-10 font-semibold text-lg text-center">Subjects</h1>
 
+                <Errors errorCode={errorCode} numberOfSubjects={numberOfSubjects} />
+
                 <form className="mt-10" onSubmit={this.handleSelection}>
 
                     {
-                        curriculumSubjects.length > 0 ?
-                            curriculumSubjects.map((subject, index) => (
+                        curriculumSubjects.length ?
+
+                            curriculumSubjects.filter(subject => subject.discipline === 'English' || subject.discipline === 'Mathematics').map((subject, index) => (
 
                                 <div key={index}>
+
                                     <label key={subject.name} htmlFor={subject.name}>{subject.name}</label>
-                                    <input key={subject.id} id={subject.id} type="checkbox" name={subject.name} className="ml-3" />
+                                    <input
+                                        key={subject.id}
+                                        id={subject.id}
+                                        type="checkbox"
+                                        name={subject.name}
+                                        className="ml-3"
+                                        checked
+                                        disabled
+
+                                    />
+
                                 </div>
 
-                            )) :
+                            ))
+
+                            :
 
                             <button disabled type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 inline-flex items-center">
                                 <svg role="status" className="inline mr-3 w-4 h-4 text-white animate-spin" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -119,6 +220,28 @@ class Subjects extends Component {
                                 </svg>
                                 Loading subjects
                             </button>
+
+                    }
+
+                    {
+
+                        curriculumSubjects.filter(subject => subject.discipline !== 'English' && subject.discipline !== 'Mathematics').map((subject, index) => (
+
+                            <div key={index}>
+
+                                <label key={subject.name} htmlFor={subject.name}>{subject.name}</label>
+                                <input
+                                    key={subject.id}
+                                    id={subject.id}
+                                    type="checkbox"
+                                    name={subject.name}
+                                    className="ml-3"
+                                />
+
+                            </div>
+
+                        ))
+
                     }
 
                     <button onClick={this.props.onClick} className="mt-10 bg-blue-700 text-white px-4 py-1 rounded mx-auto mr-4">Back</button>

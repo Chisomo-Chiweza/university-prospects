@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import DisplayProgrammes from './DisplayProgrammes';
+import Errors from './validation/Errors';
 
 class Grades extends Component {
 
@@ -7,12 +8,15 @@ class Grades extends Component {
 
         super(props);
         this.state = {
+
             subjects: this.props.subjects,
             subjectsWithGrades: [],
-            loadProgrammes: false,
+            errorCode: 0,
+            loadProgrammes: false 
+
         }
 
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.enterGrades = this.enterGrades.bind(this);
         this.previous = this.previous.bind(this);
 
     }
@@ -28,7 +32,56 @@ class Grades extends Component {
 
     }
 
-    handleSubmit(event) {
+    isValid(event, valid) {
+
+        event.preventDefault();
+
+        let isValid = true;
+        const ids = [];
+        const { subjects } = this.state;
+
+        for (let i = 0; i < subjects.length; i++) {
+
+            const subject = subjects[i];
+            ids.push(subject.id)
+
+        }
+
+        for (let i = 0; i < ids.length; i++) {
+
+            const subjectId = ids[i];
+            const input = document.getElementById(`input # ${subjectId}`);
+
+            if (input.value === '') {
+
+                input.required = true;
+                isValid = false;
+                this.setState({ errorCode: 1 })
+
+            }
+
+            if (valid) {
+
+                input.required = false;
+                isValid = true;
+                this.setState({ errorCode: 0 })
+
+            }
+
+        }
+
+        return isValid;
+
+    }
+
+
+    enterGrades(event) {
+
+        if (!this.isValid(event)) {
+            return
+        } else {
+            this.isValid(event, true);
+        }
 
         event.preventDefault();
 
@@ -54,7 +107,7 @@ class Grades extends Component {
 
         this.setState({
             subjectsWithGrades: subjectsWithGrades,
-            loadProgrammes: true
+            // loadProgrammes: true
         })
 
         for (let i = 0; i < ids.length; i++) {
@@ -71,20 +124,32 @@ class Grades extends Component {
 
     render() {
 
-        const { subjects, loadProgrammes, subjectsWithGrades } = this.state;
+        const { subjects, loadProgrammes, subjectsWithGrades, errorCode } = this.state;
 
         return (
 
             <div>
                 <h1 className="mt-10 font-semibold text-lg text-center">Grades</h1>
 
-                <form onSubmit={this.handleSubmit} className="mt-4">
+                <Errors errorCode={errorCode} />
+
+                <form onSubmit={this.enterGrades} className="mt-4">
 
                     {subjects.map((subject, index) => (
 
+
                         <div key={index}>
+
+
                             <label key={subject.name} htmlFor={subject.id} className="text-sm">{subject.name}</label><br />
-                            <input key={subject.id} id={`input # ${subject.id}`} type="text" className="p-1 rounded border border-yellow-500 bg-yellow-300" />
+                            <input
+                                key={subject.id}
+                                id={`input # ${subject.id}`}
+                                type="number"
+                                className="p-1 rounded border-2 border-yellow-600 bg-yellow-100 required:border-red-600 required:bg-red-100"
+                                required={false}
+                            />
+                            
                         </div>
 
                     ))}
