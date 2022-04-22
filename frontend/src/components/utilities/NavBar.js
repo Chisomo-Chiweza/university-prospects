@@ -34,10 +34,24 @@ function Navbar() {
                         </NavLink>
 
                         <NavLink
+                            className="hover:to-cyan-800 focus:ring-sky-500 py-2 font-medium text-space active:text-jonquil"
+                            to="/"
+                        >
+                            Contacts 
+                        </NavLink>
+
+                        <NavLink
+                            className="hover:to-cyan-800 focus:ring-sky-500 py-2 font-medium text-space active:text-jonquil"
+                            to="/"
+                        >
+                            About 
+                        </NavLink>
+
+                        <NavLink
                             className="py-2 font-medium text-space active:text-jonquil"
                             to="/enter-grades"
                         >
-                            See your top programs
+                            Get Started
                         </NavLink>
 
                     </div>
@@ -64,7 +78,7 @@ function Navbar() {
                     <div className="hidden mobile-menu">
                         <ul>
                             <li className="block text-sm px-2 text-gray-500 font-semibold">Home</li>
-                            <li className="block text-sm px-2 text-gray-500 font-semibold">See top programs</li>
+                            <li className="block text-sm px-2 text-gray-500 font-semibold">Get Started</li>
                         </ul>
                     </div>
 

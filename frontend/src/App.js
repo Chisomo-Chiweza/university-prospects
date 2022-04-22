@@ -15,8 +15,8 @@ function App() {
 
                 <Navbar />
                 <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="*" element={<h1 className="mt-10 text-center font-semibold text-2xl">There's nothing here!</h1>} />
+                    <Route exact path="*" element={<Home />} />
+                    <Route path="/" element={<h1 className="mt-10 text-center font-semibold text-2xl">Welcome To University Prospects</h1>} />
                 </Routes>
 
             </BrowserRouter>
