@@ -79,6 +79,8 @@ function Navbar() {
                         <ul>
                             <li className="block text-sm px-2 text-gray-500 font-semibold">Home</li>
                             <li className="block text-sm px-2 text-gray-500 font-semibold">Get Started</li>
+                            <li className="block text-sm px-2 text-gray-500 font-semibold">About</li>
+                            <li className="block text-sm px-2 text-gray-500 font-semibold">Contacts</li>
                         </ul>
                     </div>
 

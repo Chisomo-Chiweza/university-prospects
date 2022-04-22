@@ -21,6 +21,12 @@ function App() {
 
             </BrowserRouter>
 
+            <div className="mt-20 text-center ">
+           <button class="border-2 border-yellow-400 px-4 py-2  text-2xl font-bold text-center
+           hover:bg-indigo-900 rounded-full hover:text-yellow-400 hover:font-bold">
+               Get Started</button>
+           </div>
+
         </div>
 
 
