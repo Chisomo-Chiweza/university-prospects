@@ -1,9 +1,11 @@
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import Logo from "../../assets/logo.png"
 
 function Navbar() {
 
     return (
+        
 
         <nav className="bg-white border-b border-gray-200 sticky top-0 z-10 backdrop-filter backdrop-blur-lg bg-opacity-20">
 
@@ -27,17 +29,31 @@ function Navbar() {
                     <div className="hidden md:flex items-center space-x-3">
 
                         <NavLink
-                            className="py-2 font-medium text-space active:text-jonquil"
+                            className="py-2 font-medium text-space active:text-jonquil hover:leading-loose"
                             to="/"
                         >
                             Home
                         </NavLink>
 
                         <NavLink
-                            className="py-2 font-medium text-space active:text-jonquil"
+                            className="py-2 font-medium text-space active:text-jonquil hover:leading-loose"
+                            to="/"
+                        >
+                            About
+                        </NavLink>
+
+                        <NavLink
+                            className="py-2 font-medium text-space active:text-jonquil hover:leading-loose"
+                            to="/"
+                        >
+                            Contacts
+                        </NavLink>
+
+                        <NavLink
+                            className="py-2 font-medium text-space active:text-jonquil hover:leading-loose"
                             to="/enter-grades"
                         >
-                            See your top programs
+                           Get Started
                         </NavLink>
 
                     </div>
@@ -64,17 +80,23 @@ function Navbar() {
                     <div className="hidden mobile-menu">
                         <ul>
                             <li className="block text-sm px-2 text-gray-500 font-semibold">Home</li>
-                            <li className="block text-sm px-2 text-gray-500 font-semibold">See top programs</li>
+                            <li className="block text-sm px-2 text-gray-500 font-semibold">About</li>
+                            <li className="block text-sm px-2 text-gray-500 font-semibold">Contacts</li>
+                            <li className="block text-sm px-2 text-gray-500 font-semibold">Get Started</li>
                         </ul>
                     </div>
 
                 </div>
 
             </div>
+            
 
 
         </nav>
+        
     );
+
+
 }
 
 export default Navbar;
