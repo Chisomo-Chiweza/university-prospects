@@ -1,7 +1,8 @@
 import { Component } from 'react';
 import axios from 'axios';
-import Grades from './Grades';
 import Errors from './validation/Errors';
+import IGCSEGrades from './IGCSEGrades';
+import MSCEGrades from './MSCEGrades';
 
 class Subjects extends Component {
 
@@ -10,10 +11,12 @@ class Subjects extends Component {
         super(props);
         this.state = {
 
+            curriculumId: props.curriculumId,
             curriculumSubjects: [],
             selectedSubjects: [],
             errorCode: 0,
-            loadGrades: false,
+            loadMSCEGrades: false,
+            loadIGCSEGrades: false,
             numberOfSubjects: 0
 
         }
@@ -27,7 +30,7 @@ class Subjects extends Component {
 
         const getCurriculumSubjects = async () => {
 
-            const curriculumId = this.props.curriculumId;
+            const curriculumId = this.state.curriculumId;
             const curriculumUrl = `https://university-prospects.herokuapp.com/curriculumSubjects/${curriculumId}`;
             const { data } = await axios.get(curriculumUrl);
             this.setState({ data: data });
@@ -46,8 +49,7 @@ class Subjects extends Component {
         let isValid = true;
         let { selectedSubjects, numberOfSubjects } = this.state;
         numberOfSubjects = selectedSubjects.length;
-        console.log(numberOfSubjects);
-
+    
         if (selectedSubjects.length < 6) {
 
             this.setState({
@@ -99,7 +101,7 @@ class Subjects extends Component {
         event.preventDefault();
 
         const ids = [];
-        const { curriculumSubjects } = this.state;
+        const { curriculumSubjects, curriculumId } = this.state;
         let checkedItems = [];
         let selectedSubjects = this.state.selectedSubjects;
 
@@ -156,18 +158,26 @@ class Subjects extends Component {
             this.isValid(event, true);
         }
 
-        this.setState({ selectedSubjects: selectedSubjects });
-        this.setState({ loadGrades: true });
+        this.setState({ 
+            selectedSubjects: selectedSubjects,
+         });
 
-        console.log(this.state.selectedSubjects.length);
+        if (curriculumId === '1') {
+            this.setState({ loadIGCSEGrades: true })
+        }
 
+        if (curriculumId === '2') {
+            this.setState({ loadMSCEGrades: true })
+        }
+        
     }
 
     previous(event) {
 
         event.preventDefault();
         this.setState({
-            loadGrades: false,
+            loadIGCSEGrades: false,
+            loadMSCEGrades: false,
             selectedSubjects: []
         })
 
@@ -176,7 +186,7 @@ class Subjects extends Component {
 
     render() {
 
-        const { curriculumSubjects, loadGrades, selectedSubjects, errorCode, numberOfSubjects } = this.state;
+        const { curriculumSubjects, loadIGCSEGrades, loadMSCEGrades, selectedSubjects, errorCode, numberOfSubjects } = this.state;
 
         return (
 
@@ -191,7 +201,7 @@ class Subjects extends Component {
                     {
                         curriculumSubjects.length ?
 
-                            curriculumSubjects.filter(subject => subject.discipline === 'English' || subject.discipline === 'Mathematics').map((subject, index) => (
+                            curriculumSubjects.filter(subject => subject.discipline === 'English').map((subject, index) => (
 
                                 <div key={index}>
 
@@ -225,7 +235,7 @@ class Subjects extends Component {
 
                     {
 
-                        curriculumSubjects.filter(subject => subject.discipline !== 'English' && subject.discipline !== 'Mathematics').map((subject, index) => (
+                        curriculumSubjects.filter(subject => subject.discipline !== 'English').map((subject, index) => (
 
                             <div key={index}>
 
@@ -249,11 +259,9 @@ class Subjects extends Component {
 
                 </form>
 
-                {
-                    loadGrades ? <Grades subjects={selectedSubjects} onClick={this.previous} /> : null
-
-                }
-
+                { loadIGCSEGrades ? <IGCSEGrades subjects={selectedSubjects} onClick={this.previous} /> : null }
+                { loadMSCEGrades ? <MSCEGrades subjects={selectedSubjects} onClick={this.previous} /> : null }
+            
             </div>
 
 
