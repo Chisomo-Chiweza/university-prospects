@@ -6,6 +6,9 @@
 20/04/2022
 
 ~~Add validation~~
-TODO: Fix subject issues in generateProgrammeFunction
-TODO: Create seperate components for IGCSE and for MSCE
-TODO: Refactor function to include either IGCSE or MSCE grades
+
+22/04/2022
+TODO: Fix subject issues in generateProgrammeFunction and review requirements.
+TODO: Make sure that all subjects are six credits.
+TODO: Refactor functions to include both IGCSE input and MSCE input.
+TODO: Have meaningful messages when the user is not eligible for any programme.

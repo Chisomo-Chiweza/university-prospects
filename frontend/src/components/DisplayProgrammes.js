@@ -39,6 +39,7 @@ class DisplayProgrammes extends Component {
     render() {
 
         const { recommendedProgrammes } = this.state;
+    
 
         return (
 
@@ -73,5 +74,3 @@ class DisplayProgrammes extends Component {
 }
 
 export default DisplayProgrammes;
-
-// TODO: Fix checking and unchecking issue.
