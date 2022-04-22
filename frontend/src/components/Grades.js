@@ -38,7 +38,7 @@ class Grades extends Component {
         
         event.preventDefault();
         this.setState({ loadProgrammes: true });
-        alert('Your grades have been submitted!');
+        alert('Your grades have been submitted successfully!');
 
     }
 

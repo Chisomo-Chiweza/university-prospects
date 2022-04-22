@@ -27,28 +27,28 @@ function Navbar() {
                     <div className="hidden md:flex items-center space-x-3">
 
                         <NavLink
-                            className="py-2 font-medium text-space active:text-jonquil"
-                            to="/"
+                            className=" py-2 font-medium text-space active:text-jonquil hover:text-xl"
+                            to="/home"
                         >
                             Home
                         </NavLink>
 
                         <NavLink
-                            className="hover:to-cyan-800 focus:ring-sky-500 py-2 font-medium text-space active:text-jonquil"
-                            to="/"
+                            className="py-2 font-medium text-space active:text-jonquil hover:text-xl"
+                            to="/contacts"
                         >
                             Contacts 
                         </NavLink>
 
                         <NavLink
-                            className="hover:to-cyan-800 focus:ring-sky-500 py-2 font-medium text-space active:text-jonquil"
-                            to="/"
+                            className="py-2 font-medium text-space active:text-jonquil hover:text-xl"
+                            to="/about"
                         >
                             About 
                         </NavLink>
 
                         <NavLink
-                            className="py-2 font-medium text-space active:text-jonquil"
+                            className="py-2 font-medium text-space active:text-jonquil hover:text-xl"
                             to="/enter-grades"
                         >
                             Get Started
