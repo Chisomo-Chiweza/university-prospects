@@ -56,6 +56,7 @@ function Navbar() {
                         </NavLink>
 
                     </div>
+                    
 
                     <div className="md:hidden flex items-center">
 
@@ -91,6 +92,7 @@ function Navbar() {
 
 
         </nav>
+        
     );
 }
 
