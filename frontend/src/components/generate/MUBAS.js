@@ -1,5 +1,5 @@
 
-export default function generateMUBAS(subjects, programmes) {
+export default function generateMUBAS(subjects, programmes, IGCSE) {
 
     const MUBAS = [];
     let temp = []
@@ -7,7 +7,7 @@ export default function generateMUBAS(subjects, programmes) {
     required.push(subjects.find(subject => subject.discipline === 'English'));
 
 
-    temp = appliedScience(required, subjects, programmes);
+    temp = appliedScience(required, subjects, programmes, IGCSE);
     if (temp.length > 0) {
 
         for (let i = 0; i < temp.length; i++) {
@@ -21,7 +21,7 @@ export default function generateMUBAS(subjects, programmes) {
     }
 
 
-    temp = builtEnv(required, subjects, programmes);
+    temp = builtEnv(required, subjects, programmes, IGCSE);
     if (temp.length > 0) {
 
         for (let i = 0; i < temp.length; i++) {
@@ -34,7 +34,7 @@ export default function generateMUBAS(subjects, programmes) {
 
     }
 
-    temp = commerce(required, subjects, programmes);
+    temp = builtEnvArt(required, subjects, programmes, IGCSE);
     if (temp.length > 0) {
 
         for (let i = 0; i < temp.length; i++) {
@@ -47,7 +47,7 @@ export default function generateMUBAS(subjects, programmes) {
 
     }
 
-    temp = education(required, subjects, programmes);
+    temp = commerce(required, subjects, programmes, IGCSE);
     if (temp.length > 0) {
 
         for (let i = 0; i < temp.length; i++) {
@@ -60,7 +60,7 @@ export default function generateMUBAS(subjects, programmes) {
 
     }
 
-    temp = engineering(required, subjects, programmes);
+    temp = education(required, subjects, programmes, IGCSE);
     if (temp.length > 0) {
 
         for (let i = 0; i < temp.length; i++) {
@@ -73,114 +73,136 @@ export default function generateMUBAS(subjects, programmes) {
 
     }
 
-    // MUBAS.sort((a, b) => a.available_space > b.available_space ? 1 : -1);
+    temp = engineering(required, subjects, programmes, IGCSE);
+    if (temp.length > 0) {
+
+        for (let i = 0; i < temp.length; i++) {
+            const programme = temp[i];
+            MUBAS.push(programme);
+        }
+        while (temp.length > 0) {
+            temp.pop();
+        }
+
+    }
+
 
     return MUBAS;
 
 }
 
-function appliedScience(required, subjects, programmes) {
+function appliedScience(required, subjects, programmes, IGCSE) {
 
     const appliedScienceProgrammes = programmes.filter(programme => programme.facultyid === 11);
+    const requiredScience = subjects.filter(subject => subject.discipline === 'Mathematics');
     const necessarySubjects = [];
-    const advantage = subjects.find(subject => subject.discipline === 'Mathematics');
 
     for (let i = 0; i < subjects.length; i++) {
         const subject = subjects[i];
-        if (subject.discipline === 'Science' && subject.grade <= 4) {
+        if (subject.discipline === 'Science' && (subject.grade <= 5 || IGCSE.includes(subject.grade))) {
             necessarySubjects.push(subject);
         }
     }
-    const minimumRequirements = necessarySubjects.length >= 3 && required.every(subject => subject.grade <= 4);
-    const isEligible = minimumRequirements && advantage.grade <= 4;
+    const minimumRequirements = required.every(subject => (subject.grade <= 5 || IGCSE.includes(subject.grade))) && subjects.every(subject => (subject.grade <= 5 || IGCSE.includes(subject.grade)));
+    const isEligible = (necessarySubjects.length >= 2 && requiredScience.some(subject => (subject.grade <= 5 || IGCSE.includes(subject.grade)))) && minimumRequirements;
 
     return isEligible ? appliedScienceProgrammes : [];
 
 }
 
-function builtEnv(required, subjects, programmes) {
+function builtEnv(required, subjects, programmes, IGCSE) {
 
-    const builtEnvProgrammes = programmes.filter(programme => programme.facultyid === 12);
-    const builtEnvArtProgrammes = [];
-    builtEnvArtProgrammes.push(builtEnvProgrammes.shift());
-    builtEnvArtProgrammes.push(builtEnvProgrammes.shift());
+    const builtEnvProgrammes = programmes.filter(programme => programme.facultyid === 12 && (programme.id !== 61 && programme.id !== 62));
+    const requiredScience = subjects.filter(subject => subject.discipline === 'Mathematics');
     const necessarySubjects = [];
-    const advantage = subjects.find(subject => subject.discipline === 'Mathematics');
-    const artAdvantage = subjects.find(subject => subject.discipline === 'Art');
+    
     
     for (let i = 0; i < subjects.length; i++) {
         const subject = subjects[i];
-        if (subject.discipline === 'Science' && subject.grade <= 4) {
+        if (subject.discipline === 'Science' && (subject.grade <= 4 || IGCSE.includes(subject.grade))) {
             necessarySubjects.push(subject);
         }
     }
 
-    
-    if (artAdvantage != null && artAdvantage.grade <= 4) {
-        for (let i = 0; i < builtEnvArtProgrammes.length; i++) {
-            const programme = builtEnvArtProgrammes[i];
-            builtEnvProgrammes.push(programme);
-        }
-    }
-
-    
-    const minimumRequirements = necessarySubjects.length >= 3 && required.every(subject => subject.grade <= 4);
-    const isEligible = minimumRequirements && advantage.grade <= 3;
+    const minimumRequirements = required.every(subject => (subject.grade <= 4 || IGCSE.includes(subject.grade))) && subjects.every(subject => (subject.grade <= 4 || IGCSE.includes(subject.grade)));
+    const isEligible = (necessarySubjects.length >= 2 && requiredScience.some(subject => (subject.grade <= 4 || IGCSE.includes(subject.grade)))) && minimumRequirements;
 
     return isEligible ? builtEnvProgrammes : [];
 
 }
 
-function commerce(required, subjects, programmes) {
+function builtEnvArt(required, subjects, programmes, IGCSE) {
+
+    const builtEnvArtProgrammes = programmes.filter(programme => programme.id === 61 || programme.id === 62);
+    const requiredScience = subjects.filter(subject => subject.discipline === 'Mathematics');
+    const artAdvantage = subjects.filter(subject => subject.discipline === 'Art');
+    const necessarySubjects = [];
+    
+    
+    for (let i = 0; i < subjects.length; i++) {
+        const subject = subjects[i];
+        if (subject.discipline === 'Science' && (subject.grade <= 4 || IGCSE.includes(subject.grade))) {
+            necessarySubjects.push(subject);
+        }
+    }
+
+    const minimumRequirements = required.every(subject => (subject.grade <= 4 || IGCSE.includes(subject.grade))) && subjects.every(subject => (subject.grade <= 4 || IGCSE.includes(subject.grade)));
+    const isEligible = (necessarySubjects.length >= 2 && requiredScience.some(subject => (subject.grade <= 4 || IGCSE.includes(subject.grade)))) && (minimumRequirements && artAdvantage.some(subject => (subject.grade <= 4 || IGCSE.includes(subject.grade))));
+
+    return isEligible ? builtEnvArtProgrammes : [];
+
+}
+
+function commerce(required, subjects, programmes, IGCSE) {
 
     const commerceProgrammes = programmes.filter(programme => programme.facultyid === 13);
-    const advantage = subjects.find(subject => subject.discipline === 'Mathematics');
+    const requiredScience = subjects.filter(subject => subject.discipline === 'Mathematics');
     
-    const isEligible = advantage.grade <= 3 && required.every(subject => subject.grade <= 5);
+    const isEligible = (required.every(subject => (subject.grade <= 6 || IGCSE.includes(subject.grade))) && subjects.every(subject => (subject.grade <= 6 || IGCSE.includes(subject.grade)))) && requiredScience.some(subject => (subject.grade <= 6 || IGCSE.includes(subject.grade)));
 
     return isEligible ? commerceProgrammes : [];
 
 }
 
-function education(required, subjects, programmes) {
+function education(required, subjects, programmes, IGCSE) {
 
-    required.push(subjects.find(subject => subject.discipline === 'Mathematics'))
     const educationProgrammes = programmes.filter(programme => programme.facultyid === 14 && programme.id !== 75);
+    const requiredScience = subjects.filter(subject => subject.discipline === 'Mathematics');
     const necessarySubjects = [];
 
     for (let i = 0; i < subjects.length; i++) {
         const subject = subjects[i];   
-        if (subject.discipline === 'Science' && subject.grade <= 5) {
+        if (subject.discipline === 'Science' && (subject.grade <= 6 || IGCSE.includes(subject.grade))) {
             necessarySubjects.push(subject);
         }
         
     }
 
-    if (necessarySubjects.length >= 3) {
+    if (necessarySubjects.length >= 2) {
         educationProgrammes.push(programmes.find(programme => programme.id === 75))
     }
 
-    const isEligible = required.every(subject => subject.grade <= 4);
+    const minimumRequirements = required.every(subject => (subject.grade <= 6 || IGCSE.includes(subject.grade))) && subjects.every(subject => (subject.grade <= 6 || IGCSE.includes(subject.grade)));
+    const isEligible = requiredScience.some(subject => (subject.grade <= 6 || IGCSE.includes(subject.grade))) && minimumRequirements;
 
     return isEligible ? educationProgrammes : [];
 
 }
 
-function engineering(required, subjects, programmes) {
+function engineering(required, subjects, programmes, IGCSE) {
 
     const engineeringProgramming = programmes.filter(programme => programme.facultyid === 15);
+    const requiredScience = subjects.filter(subject => subject.discipline === 'Mathematics');
     const necessarySubjects = [];
-    const advantage = subjects.find(subject => subject.discipline === 'Mathematics');
-
-
+   
     for (let i = 0; i < subjects.length; i++) {
         const subject = subjects[i];
-        if (subject.discipline === 'Science' && subject.grade <= 4) {
+        if (subject.discipline === 'Science' && (subject.grade <= 4 || IGCSE.includes(subject.grade))) {
             necessarySubjects.push(subject);
         }
     }
-    const minimumRequirements = necessarySubjects.length >= 3 && required.every(subject => subject.grade <= 4);
-    const isEligible = minimumRequirements && advantage.grade <= 3;
+    const minimumRequirements = required.every(subject => (subject.grade <= 4 || IGCSE.includes(subject.grade))) && subjects.every(subject => (subject.grade <= 4 || IGCSE.includes(subject.grade)));
+    const isEligible = (necessarySubjects.length >= 2 && requiredScience.some(subject => (subject.grade <= 4 || IGCSE.includes(subject.grade)))) && minimumRequirements;
 
     return isEligible ? engineeringProgramming : [];
 
