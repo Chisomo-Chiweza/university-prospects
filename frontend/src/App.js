@@ -12,7 +12,7 @@ function App() {
 
     return (
 
-        <div className="flex flex-col h-max">
+        <div className="bg-slate-200 h-screen bg-cover flex flex-col">
                 
             <BrowserRouter>
 
@@ -24,16 +24,12 @@ function App() {
                     <Route exact path="/About" element={<About />} />
                     <Route exact path="/" element={<h1 className="mt-10 text-center font-semibold text-4xl" src="/assets/Bg.png">Welcome To University Prospects
                     <div className="mt-10 text-xl "> This project is designed to help Malawian individuals apply to University better</div>
-                        <div className="mt-20 text-center ">
-                        <button class="border-2 border-yellow-400 px-6 py-2  text-2xl font-bold text-center hover:bg-indigo-900 rounded-full hover:text-yellow-400 hover:font-bold">
+                    <div className="mt-20 text-center ">
+                        <button class="border-2 border-yellow-400 px-6 py-2  text-2xl font-bold text-center hover:bg-space rounded-full hover:text-yellow-400 hover:font-bold">
                         Get Started</button>
                     </div>
                     </h1>} />
                 </Routes>
-                
-               
-            
-
             </BrowserRouter>
 
 

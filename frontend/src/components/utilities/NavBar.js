@@ -5,7 +5,7 @@ function Navbar() {
 
     return (
 
-        <nav className="bg-white border-b border-gray-200 sticky top-0 z-10 backdrop-filter backdrop-blur-lg bg-opacity-20">
+        <nav className="bg-slate-700 border-b border-gray-200 sticky top-0 z-10 backdrop-filter backdrop-blur-lg bg-opacity-20">
 
             <div className="max-w-6xl mx-auto px-4">
 
@@ -17,7 +17,7 @@ function Navbar() {
                     >
                         <div className="flex items-center py-4 px-2">
                             <img src={ Logo } alt="Logo" className="w-10 mr-2" />
-                            <span className="font-semibold text-jonquil text-lg">
+                            <span className="font-bold text-jonquil text-2xl">
                                 <span className="text-space">University</span> Prospects
                             </span>
                         </div>
@@ -27,21 +27,21 @@ function Navbar() {
                     <div className="hidden md:flex items-center gap-8 bg-clip-padding">
 
                         <NavLink
-                            className="py-2 font-medium text-space active:text-jonquil hover:text-xl"
+                            className="py-2 font-medium text-space active:text-jonquil hover:text-2xl"
                             to="/"
                         >
                             Home
                         </NavLink>
 
                         <NavLink
-                            className="py-2 font-medium text-space active:text-jonquil hover:text-xl"
+                            className="py-2 font-medium text-space active:text-jonquil hover:text-2xl"
                             to="/contacts"
                         >
                             Contacts 
                         </NavLink>
 
                         <NavLink
-                            className="py-2 font-medium text-space active:text-jonquil hover:text-xl"
+                            className="py-2 font-medium text-space active:text-jonquil hover:text-2xl"
                             to="/about"
                         >
                             About 
@@ -49,7 +49,7 @@ function Navbar() {
 
                         
                         <NavLink
-                            className=" py-2 font-medium text-space active:text-jonquil hover:text-xl"
+                            className=" py-2 font-medium text-space active:text-jonquil hover:text-2xl"
                             to="/home"
                         >
                             Get Started
