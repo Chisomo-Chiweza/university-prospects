@@ -24,11 +24,11 @@ function Navbar() {
 
                     </NavLink>
 
-                    <div className="hidden md:flex items-center space-x-3">
+                    <div className="hidden md:flex items-center gap-8 bg-clip-padding">
 
                         <NavLink
-                            className=" py-2 font-medium text-space active:text-jonquil hover:text-xl"
-                            to="/home"
+                            className="py-2 font-medium text-space active:text-jonquil hover:text-xl"
+                            to="/"
                         >
                             Home
                         </NavLink>
@@ -47,9 +47,10 @@ function Navbar() {
                             About 
                         </NavLink>
 
+                        
                         <NavLink
-                            className="py-2 font-medium text-space active:text-jonquil hover:text-xl"
-                            to="/enter-grades"
+                            className=" py-2 font-medium text-space active:text-jonquil hover:text-xl"
+                            to="/home"
                         >
                             Get Started
                         </NavLink>

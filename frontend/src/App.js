@@ -4,6 +4,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 // Import components
 import Home from "./components/Home";
 import Navbar from "./components/utilities/NavBar";
+import Contacts from "./components/Contacts";
+import About from "./components/About";
 
 function App() {
 
@@ -17,9 +19,11 @@ function App() {
                 <Routes>
                     
                     <Route exact path="*" element={<Home />} />
-                    <Route path="/" element={<h1 className="mt-10 text-center font-semibold text-4xl" src="/assets/Bg.png">Welcome To University Prospects
+                    <Route exact path="/Contacts" element={<Contacts />} />
+                    <Route exact path="/About" element={<About />} />
+                    <Route exact path="/" element={<h1 className="mt-10 text-center font-semibold text-4xl" src="/assets/Bg.png">Welcome To University Prospects
                     <div className="mt-10 text-xl "> This project is designed to help Malawian individuals apply to University better
-
+                    
                     </div>
                     </h1>} />
                 </Routes>

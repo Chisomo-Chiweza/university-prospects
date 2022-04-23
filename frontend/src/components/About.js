@@ -3,7 +3,7 @@ import React from "react"
 function About (){
     return (
         <div>
-            <h1>About University Prospects</h1>
+            <h1 className="mt-10 text-center font-semibold text-4xl">About University Prospects</h1>
         </div>
     );
 }
