@@ -2,7 +2,7 @@
 // import generateLUANAR from './LUANAR';
 // import generateMUBAS from './MUBAS';
 // import generateMUST from './MUST';
-// import generateUNIMA from './UNIMA';
+import generateUNIMA from './UNIMA';
 import generateMZUNI from './MZUNI';
 
 export function generateProgrammes(subjects, programmes) {
@@ -62,20 +62,20 @@ export function generateProgrammes(subjects, programmes) {
 
     // }
 
-    // temp = generateUNIMA(subjects, programmes, IGCSE);
-    // if (temp.length > 0) {
+    let temp = generateUNIMA(subjects, programmes, IGCSE);
+    if (temp.length > 0) {
 
-    //     for (let i = 0; i < temp.length; i++) {
-    //         const programme = temp[i];
-    //         recommendedProgrammes.push(programme);
-    //     }
-    //     while (temp.length > 0) {
-    //         temp.pop();
-    //     }
+        for (let i = 0; i < temp.length; i++) {
+            const programme = temp[i];
+            recommendedProgrammes.push(programme);
+        }
+        while (temp.length > 0) {
+            temp.pop();
+        }
 
-    // }
+    }
 
-    let temp = generateMZUNI(subjects, programmes, IGCSE);
+    temp = generateMZUNI(subjects, programmes, IGCSE);
     if (temp.length > 0) {
 
         for (let i = 0; i < temp.length; i++) {
