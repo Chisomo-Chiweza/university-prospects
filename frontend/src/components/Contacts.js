@@ -3,19 +3,20 @@ import React from "react"
 
 function Contacts (){
     return (
-        <div class="flex w-full min-hs-screen justify-center items-center">
-            <div class="flex flex-col space-y-6 bg-cyan-700 w-full max-w-4xl rounded-xl shadow-lg text-space">
+        <div class="flex w-full min-hs-screen text- justify-center items-center">
+            <div class="flex flex-col bg-space space-y-4 bg-cyan-700 w-full max-w-4xl rounded-xl shadow-lg text-white">
                <div class="flex flex-col space-y-8 justify-between">
-               <div class="font-bold text-4xl tracking-wide">
+               <div class="font-bold text-4xl tracking-wide p-8 text-center">
                    <h1>Contact Us</h1>
-                   <p class="pt-2 text-cyan text-sm">Please fill the form including your email for feedback</p>
-               </div>
-               <div class="flex flex-col space-y-4">
-               <div class="inline-flex space-x-2 items-center">
-                     <ion-icon 
+                   <p class="pt-2 text-cyan text-sm">Please fill the following form if you have any feedback </p>
+                 </div>
+                <div class="flex flex-col space-y-2 p-9" >
+                 <div class="inline-flex space-x-2 items-center">
+                      <ion-icon 
                         name="call"
                         // class="text-teal-300 text-xl"
                      ></ion-icon>
+                     <span>+(265) 992 000 097  /</span>
                      <span>+(265) 992 000 097</span>
                </div>
                <div class="inline-flex space-x-2 items-center">
@@ -32,7 +33,7 @@ function Contacts (){
                    <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
                </div>
                 <div>
-                    <div class="bg-yellow-400 rounded-xl shadow-lg p-8 text-space">
+                    <div class="bg-yellow-300 rounded-xl shadow-lg p-8 text-space">
                         <form action="" class="flex flex-col space-y-4">
                             <div>
                                 <label for="" class="text-sm">Your name</label>
@@ -52,12 +53,15 @@ function Contacts (){
                             <div>
                                 <label for="" class="text-sm">Massage</label>                            
                             <textarea 
-                                    type="email" 
+                                    rows="4"
                                     placeholder="Massage" 
                                     class="ring-1 ring-space w-full rounded-md px-4 outline-none mt-2 focus:ring-2 focus:ring-space">
 
-                                    </textarea>
+                            </textarea>
                             </div>
+                            <button class="inline-block self-end bg-space text-white font-bold rounded-lg px-6 py-2 uppercase text-sm hover:bg-space hover:text-yellow-400 hover:font-bold">
+                                Send Massage
+                            </button>
                         </form>
                     </div>
                 </div>
