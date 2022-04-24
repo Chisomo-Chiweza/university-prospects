@@ -1,5 +1,4 @@
 import { Component } from 'react';
-import DisplayProgrammes from './DisplayProgrammes';
 import Errors from './validation/Errors';
 
 class MSCEGrades extends Component {
@@ -9,6 +8,7 @@ class MSCEGrades extends Component {
         super(props);
         this.state = {
 
+            step: this.props.Step,
             subjects: this.props.subjects,
             subjectsWithGrades: [],
             errorCode: 0,
@@ -108,6 +108,8 @@ class MSCEGrades extends Component {
         this.setState({
             subjectsWithGrades: subjectsWithGrades,
             loadProgrammes: true
+        }, () => {
+            this.props.sendGraded(this.state.subjectsWithGrades);
         })
 
         for (let i = 0; i < ids.length; i++) {
@@ -122,16 +124,18 @@ class MSCEGrades extends Component {
 
     render() {
 
-        const { subjects, loadProgrammes, subjectsWithGrades, errorCode } = this.state;
+        const { subjects, errorCode } = this.state;
 
         return (
 
-            <div>
-                <h1 className="mt-10 font-semibold text-lg text-center">Grades</h1>
+            <div className='overflow-auto md:mx-auto mt-4 p-10 border border-gray-300 rounded bg-ivory'>
+
+                <h1 className="font-semibold text-lg text-center">Step 2</h1>
+                <p className='text-base text-center'>Enter the grade you got using one of the options provided</p>
 
                 <Errors errorCode={errorCode} />
 
-                <form onSubmit={this.enterGrades} className="mt-4">
+                <form onSubmit={this.enterGrades} className="mt-4 grid grid-cols-2 gap-4">
 
                     {subjects.map((subject, index) => (
 
@@ -160,12 +164,9 @@ class MSCEGrades extends Component {
 
                     ))}
 
-                    <button onClick={this.props.onClick} className="mt-10 bg-blue-700 text-white px-4 py-1 rounded mx-auto mr-4">Back</button>
-                    <button type="submit" className="mt-10 bg-green-700 text-white px-4 py-1 rounded mx-auto">Submit</button>
+                    <button type="submit" className="mt-10 bg-green-700 focus:ring-2 focus:ring-green-500 focus:bg-green-900 text-white px-4 py-1 rounded mx-auto">Submit</button>
 
                 </form>
-
-                {loadProgrammes ? <DisplayProgrammes finalSubjects={subjectsWithGrades} onClick={this.previous} /> : null}
 
             </div>
 

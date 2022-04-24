@@ -8,7 +8,7 @@ import generateMZUNI from './MZUNI';
 export function generateProgrammes(subjects, programmes) {
 
     const recommendedProgrammes = [];
-    const IGCSE = ['A+', 'A', 'B', 'C',];
+    const IGCSE = ['A+', 'A', 'B', 'C'];
     
     let temp = generateKUHES(subjects, programmes, IGCSE);
     if (temp.length > 0) {

@@ -294,11 +294,11 @@ function environmentalScience(required, subjects, programmes, IGCSE) {
 
 }
 
-function tourism(required, subject, programmes, IGCSE) {
+function tourism(required, subjects, programmes, IGCSE) {
 
     const tourismProgrammes = programmes.filter(programme => programme.facultyid === 25)
-    const isEligible = required.every(subject => subject.grade <= 6 || IGCSE.includes(subject.grade)) && subject.every(subject => subject.grade <= 6 || IGCSE.includes(subject.grade));
-
+    const isEligible = required.every(subject => subject.grade <= 6 || IGCSE.includes(subject.grade)) && subjects.every(subject => subject.grade <= 6 || IGCSE.includes(subject.grade));
+    
     return isEligible ? tourismProgrammes : [];
 
 }

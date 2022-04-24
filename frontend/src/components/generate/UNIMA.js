@@ -167,7 +167,7 @@ function science(required, subjects, programmes, IGCSE) {
     const scienceProgrammes = programmes.filter(programme => programme.facultyid === 9 && programme.id !== 27);
     const requiredScience = subjects.filter(subject => subject.discipline === 'Mathematics');    
     const necessarySubjects = [];
-    IGCSE.length = 3
+    const modifiedIGCSE = ['A+', 'A', 'B']
 
     for (let i = 0; i < subjects.length; i++) {
         const subject = subjects[i];
@@ -176,7 +176,7 @@ function science(required, subjects, programmes, IGCSE) {
         }
     }
 
-    if (requiredScience.some(subject => subject.grade <= 4 || IGCSE.includes(subject.grade))) {
+    if (requiredScience.some(subject => subject.grade <= 4 || modifiedIGCSE.includes(subject.grade))) {
         scienceProgrammes.push(programmes.find(programme => programme.id === 27));
     }
 

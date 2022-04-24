@@ -35,9 +35,9 @@ function Navbar() {
 
                         <NavLink
                             className="py-2 font-medium text-space active:text-jonquil"
-                            to="/enter-grades"
+                            to="/generate"
                         >
-                            See your top programs
+                            See programmes you are eligible for
                         </NavLink>
 
                     </div>

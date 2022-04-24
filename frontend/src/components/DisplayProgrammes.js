@@ -9,10 +9,19 @@ class DisplayProgrammes extends Component {
         super(props);
 
         this.state = {
+
+            step: this.props.Step,
             subjects: this.props.finalSubjects,
             programmes: [],
             recommendedProgrammes: [],
-            disqualified: false
+            disqualified: false,
+            kuhesEligible: false,
+            unimaEligible: false,
+            mubasEligible: false,
+            mustEligible: false,
+            mzuniEligible: false,
+            luanarEligible: false,
+
         }
 
     }
@@ -27,7 +36,8 @@ class DisplayProgrammes extends Component {
 
             let { recommendedProgrammes, subjects, programmes } = this.state;
             recommendedProgrammes = generateProgrammes(subjects, programmes);
-            this.setState({ recommendedProgrammes: recommendedProgrammes })
+            this.setState({ recommendedProgrammes: recommendedProgrammes }, () => this.props.sendProgrammes(this.state.recommendedProgrammes));
+            this.universities();
 
         }
 
@@ -36,22 +46,35 @@ class DisplayProgrammes extends Component {
 
     }
 
+    universities() {
+
+        let { recommendedProgrammes, KUHES } = this.state;
+
+        KUHES = recommendedProgrammes.filter(programme => programme.universityid === 1);
+        KUHES.length > 0 ? this.setState({ KUHES: KUHES, kuhesEligible: true }) : this.setState({ kuhesEligible: false })
+
+    }
+
     render() {
 
-        const { recommendedProgrammes } = this.state;
-    
+        const {
+            
+            recommendedProgrammes,
+
+        } = this.state;
 
         return (
 
             <div>
 
-                <button onClick={this.props.onClick} className="mt-10 bg-blue-700 text-white px-4 py-1 rounded mx-auto mr-4">Back</button>
-
-                <h1 className="mt-4  mb-6 font-semibold text-lg">Programmes</h1>
-
+                <h1 className="mt-4  mb-6 font-semibold text-lg">Programmes you are eligible for</h1>
+                
                 {
                     recommendedProgrammes.length > 0 ?
-                        recommendedProgrammes.map((programme, index) => (<li key={index}>{programme.name}</li>))
+
+                        recommendedProgrammes.map(programme => (
+                            <li key={programme.id}>{programme.name}</li>
+                        ))
                         :
                         <button disabled type="button" className="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 inline-flex items-center">
                             <svg role="status" className="inline mr-3 w-4 h-4 text-white animate-spin" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -60,7 +83,6 @@ class DisplayProgrammes extends Component {
                             </svg>
                             Generating ...
                         </button>
-
 
                 }
 

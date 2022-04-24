@@ -95,17 +95,17 @@ function medicine(required, subjects, programmes, IGCSE) {
     const medicineProgrammes = programmes.filter(programme => programme.facultyid === 1);
     const requiredScience = subjects.filter(subject => subject.discipline === 'Mathematics');
     const necessarySubjects = [];
-    IGCSE.length = 3
+    const modifiedIGCSE = ['A+', 'A', 'B']
 
     for (let i = 0; i < subjects.length; i++) {
         const subject = subjects[i];
-        if (subject.discipline === 'Science' && (subject.grade <= 3 || IGCSE.includes(subject.grade))) {
+        if (subject.discipline === 'Science' && (subject.grade <= 3 || modifiedIGCSE.includes(subject.grade))) {
             necessarySubjects.push(subject);
         }
     }
 
-    const minimumRequirements = required.every(subject => (subject.grade <= 3 || IGCSE.includes(subject.grade))) && subjects.every(subject => (subject.grade <= 3 || IGCSE.includes(subject.grade)));
-    const isEligible = (necessarySubjects.length >= 3 && requiredScience.some(subject => (subject.grade <= 3 || IGCSE.includes(subject.grade)))) && minimumRequirements;
+    const minimumRequirements = required.every(subject => (subject.grade <= 3 || modifiedIGCSE.includes(subject.grade))) && subjects.every(subject => (subject.grade <= 3 || modifiedIGCSE.includes(subject.grade)));
+    const isEligible = (necessarySubjects.length >= 3 && requiredScience.some(subject => (subject.grade <= 3 || modifiedIGCSE.includes(subject.grade)))) && minimumRequirements;
 
     return isEligible ? medicineProgrammes : [];
 
@@ -163,7 +163,7 @@ function nursing(required, subjects, programmes, IGCSE) {
     }
 
     const minimumRequirements = required.every(subject => (subject.grade <= 5 || IGCSE.includes(subject.grade))) && subjects.every(subject => (subject.grade <= 5 || IGCSE.includes(subject.grade)));
-    const isEligible = (necessarySubjects.length >= 3 && requiredScience.some(subject => (subject.grade <= 5 || IGCSE.includes(subject.grade)))) && minimumRequirements;
+    const isEligible = (necessarySubjects.length >= 2 && requiredScience.some(subject => (subject.grade <= 5 || IGCSE.includes(subject.grade)))) && minimumRequirements;
     return isEligible ? nursingProgrammes : [];
 
 }
@@ -182,7 +182,7 @@ function comHealth(required, subjects, programmes, IGCSE) {
     }
 
     const minimumRequirements = required.every(subject => (subject.grade <= 5 || IGCSE.includes(subject.grade))) && subjects.every(subject => (subject.grade <= 5 || IGCSE.includes(subject.grade)));
-    const isEligible = (necessarySubjects.length >= 3 && requiredScience.some(subject => (subject.grade <= 5 || IGCSE.includes(subject.grade)))) && minimumRequirements;
+    const isEligible = (necessarySubjects.length >= 2 && requiredScience.some(subject => (subject.grade <= 5 || IGCSE.includes(subject.grade)))) && minimumRequirements;
     return isEligible ? comHealthProgrammes : [];
 
 }
@@ -201,7 +201,7 @@ function midwifery(required, subjects, programmes, IGCSE) {
     }
 
     const minimumRequirements = required.every(subject => (subject.grade <= 5 || IGCSE.includes(subject.grade))) && subjects.every(subject => (subject.grade <= 5 || IGCSE.includes(subject.grade)));
-    const isEligible = (necessarySubjects.length >= 3 && requiredScience.some(subject => (subject.grade <= 5 || IGCSE.includes(subject.grade)))) && minimumRequirements;
+    const isEligible = (necessarySubjects.length >= 2 && requiredScience.some(subject => (subject.grade <= 5 || IGCSE.includes(subject.grade)))) && minimumRequirements;
     return isEligible ? midwiferyProgrammes : [];
 
 }

@@ -1,9 +1,6 @@
 import { Component } from 'react';
 import axios from 'axios';
 import Errors from './validation/Errors';
-import IGCSEGrades from './IGCSEGrades';
-import MSCEGrades from './MSCEGrades';
-
 class Subjects extends Component {
 
     constructor(props) {
@@ -11,12 +8,11 @@ class Subjects extends Component {
         super(props);
         this.state = {
 
+            step: this.props.Step,
             curriculumId: props.curriculumId,
             curriculumSubjects: [],
             selectedSubjects: [],
             errorCode: 0,
-            loadMSCEGrades: false,
-            loadIGCSEGrades: false,
             numberOfSubjects: 0
 
         }
@@ -101,9 +97,15 @@ class Subjects extends Component {
         event.preventDefault();
 
         const ids = [];
-        const { curriculumSubjects, curriculumId } = this.state;
+        const { curriculumSubjects } = this.state;
         let checkedItems = [];
         let selectedSubjects = this.state.selectedSubjects;
+
+        if(selectedSubjects.length > 0) {
+            while(selectedSubjects.length > 0){
+                selectedSubjects.pop();
+            }
+        }
 
         if (ids.length > 0) {
             while(ids.length > 0){
@@ -158,17 +160,7 @@ class Subjects extends Component {
             this.isValid(event, true);
         }
 
-        this.setState({ 
-            selectedSubjects: selectedSubjects,
-         });
-
-        if (curriculumId === '1') {
-            this.setState({ loadIGCSEGrades: true })
-        }
-
-        if (curriculumId === '2') {
-            this.setState({ loadMSCEGrades: true })
-        }
+        this.setState({ selectedSubjects: selectedSubjects }, () => { this.props.sendSubjects(this.state.selectedSubjects) });
         
     }
 
@@ -186,17 +178,24 @@ class Subjects extends Component {
 
     render() {
 
-        const { curriculumSubjects, loadIGCSEGrades, loadMSCEGrades, selectedSubjects, errorCode, numberOfSubjects } = this.state;
+        const { curriculumSubjects, errorCode, numberOfSubjects } = this.state;
+
 
         return (
 
-            <div>
+            <div className='overflow-auto md:mx-auto mt-4 p-10 border border-gray-300 rounded bg-ivory'>
 
-                <h1 className="mt-10 font-semibold text-lg text-center">Subjects</h1>
+                <h1 className="font-semibold text-xl text-center">Step 2</h1>
+                <h2 className='text-center text-lg'>Select your 6 highest subjects</h2>
+                <p className='mt-4 text-center'>
+                    Note that all programmes require a minimum of at least a 'C' for IGCSE 
+                    or 6 points for MSCE so if your highest subjects contain grades higher
+                    that 6 or below a C <span className='text-red-600 font-semibold'>know you will not be eligible for any programme</span>
+                </p>
 
                 <Errors errorCode={errorCode} numberOfSubjects={numberOfSubjects} />
 
-                <form className="mt-10" onSubmit={this.handleSelection}>
+                <form className="mt-10 grid grid-cols-2 gap-2" onSubmit={this.handleSelection}>
 
                     {
                         curriculumSubjects.length ?
@@ -254,14 +253,11 @@ class Subjects extends Component {
 
                     }
 
-                    <button onClick={this.props.onClick} className="mt-10 bg-blue-700 text-white px-4 py-1 rounded mx-auto mr-4">Back</button>
-                    <button type="submit" className="mt-10 bg-green-700 text-white px-4 py-1 rounded mx-auto">Submit</button>
+                   
+                    <button type="submit" className="mt-10 bg-green-700 focus:ring-2 focus:ring-green-500 focus:bg-green-900 text-white px-4 py-1 rounded mx-auto">Submit</button>
 
                 </form>
 
-                { loadIGCSEGrades ? <IGCSEGrades subjects={selectedSubjects} onClick={this.previous} /> : null }
-                { loadMSCEGrades ? <MSCEGrades subjects={selectedSubjects} onClick={this.previous} /> : null }
-            
             </div>
 
 
