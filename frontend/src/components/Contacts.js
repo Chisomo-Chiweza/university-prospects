@@ -27,13 +27,13 @@ function Contacts (){
                      <span>lexb1212@gmail.com</span>
                </div>
                <div class="flex space-x-4 text-lg">
-                   <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
-                   <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
-                   <a href="#"><ion-icon name="logo-linkedin"></ion-icon></a>
-                   <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+                   <a href="https://www.facebook.com/"><ion-icon name="logo-facebook"></ion-icon></a>
+                   <a href="https://www.twitter.com/"><ion-icon name="logo-twitter"></ion-icon></a>
+                   <a href="https://www.linkedin.com/"><ion-icon name="logo-linkedin"></ion-icon></a>
+                   <a href="https://www.instagram.com/"><ion-icon name="logo-instagram"></ion-icon></a>
                </div>
                 <div>
-                    <div class="bg-yellow-300 rounded-xl shadow-lg p-8 text-space">
+                    <div class="bg-yellow-100 rounded-xl shadow-lg p-8 text-space">
                         <form action="" class="flex flex-col space-y-4">
                             <div>
                                 <label for="" class="text-sm">Your name</label>
