@@ -28,7 +28,7 @@ export function DisplayUNIMA() {
 
         <div className="overflow-auto flex flex-col mt-20 md:mx-52">
 
-            <h1 className="m-2 font-semibold text-6xl text-space">University of Malawi<span className='text-jonquil'>(UNIMA)</span></h1>
+            <h1 className="m-2 font-semibold text-6xl text-space">University of Malawi <span className='text-jonquil'>(UNIMA)</span></h1>
 
             <p className="text-lg text-gray-600">
                 The University of Malawi is a public university
@@ -37,7 +37,7 @@ export function DisplayUNIMA() {
                 university in 2019. It is situated in Zomba. <a href="https://www.unima.ac.mw/" target={'_blank'} rel="noreferrer" className="text-space font-medium underline decoration-jonquil">Learn more about UNIMA here.</a>
             </p>
             <p className="text-lg mt-2 text-gray-600">
-                Kamuzu University has 4 faculties:
+                The University of Malawi has 4 faculties:
                 <ul>
                     <li><a href='#edu' className='underline decoration-jonquil text-space font-medium text-lg'>Faculty of Education</a></li>
                     <li><a href='#hum' className='underline decoration-jonquil text-space font-medium text-lg'>Faculty of Humanities</a></li>

@@ -24,20 +24,20 @@ function Navbar() {
                     </NavLink>
                     <div className="hidden md:flex items-center gap-8 bg-clip-padding">
                         <NavLink
-                            className="py-2 font-medium text-space active:text-jonquil hover:text-2xl"
+                            className="py-2 font-medium text-space text-lg mr-5"
                             to="/"
                         >
                             Home
                         </NavLink>
                         <NavLink
-                            className="py-2 font-medium text-space active:text-jonquil hover:text-2xl"
-                            to="/contacts"
+                            className="py-2 font-medium text-space text-lg mr-5"
+                            to="/generate"
                         >
                             Contacts 
                         </NavLink>
                         <NavLink
-                            className="py-2 font-medium text-space active:text-jonquil hover:text-2xl"
-                            to="/about"
+                            className="py-2 font-medium text-space text-lg mr-5"
+                            to="/generate"
                         >
                             About Us
                         </NavLink>
