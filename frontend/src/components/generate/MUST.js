@@ -79,7 +79,7 @@ function MIT(required, subjects, programmes, IGCSE) {
     }
 
     const minimumRequirements = required.every(subject => (subject.grade <= 4 || IGCSE.includes(subject.grade))) && subjects.every(subject => (subject.grade <= 4 || IGCSE.includes(subject.grade)));
-    const isEligible = (necessarySubjects.length >= 3 && requiredScience.every(subject => (subject.grade <= 4 || IGCSE.includes(subject.grade))) && minimumRequirements);
+    const isEligible = (necessarySubjects.length >= 2 && requiredScience.every(subject => (subject.grade <= 4 || IGCSE.includes(subject.grade))) && minimumRequirements);
 
     return isEligible ? MITProgrammes : [];
 
@@ -113,7 +113,7 @@ function NDATHA(required, subjects, programmes, IGCSE) {
     }
 
     const minimumRequirements = (required.every(subject => (subject.grade <= 4 || IGCSE.includes(subject.grade)) && subjects.every(subject => (subject.grade <= 4 || IGCSE.includes(subject.grade))))) && requiredScience.some(subject => (subject.grade <= 4 || IGCSE.includes(subject.grade)));
-    const isEligible = minimumRequirements && (advantage.length > 0 && advantage.every(subject => subject.grade <= 4 || IGCSE.includes(subject.grade)) && necessarySubjects.length >= 3);
+    const isEligible = minimumRequirements && (advantage.length > 0 && advantage.every(subject => subject.grade <= 4 || IGCSE.includes(subject.grade)) && necessarySubjects.length >= 2);
 
     return isEligible ? NDATHAProgrammes : [];
 
@@ -133,7 +133,7 @@ function medicalScience(required, subjects, programmes, IGCSE) {
     }
 
     const minimumRequirements = required.every(subject => (subject.grade <= 4 || IGCSE.includes(subject.grade))) && subjects.every(subject => (subject.grade <= 4 || IGCSE.includes(subject.grade)));
-    const isEligible = (necessarySubjects.length >= 3 && requiredScience.some(subject => (subject.grade <= 4 || IGCSE.includes(subject.grade)))) && minimumRequirements;
+    const isEligible = (necessarySubjects.length >= 2 && requiredScience.some(subject => (subject.grade <= 4 || IGCSE.includes(subject.grade)))) && minimumRequirements;
 
     return isEligible ? medicalScienceProgrammes : [];
 
@@ -150,7 +150,7 @@ function BINGU(required, subjects, programmes, IGCSE) {
             necessarySubjects.push(subject);
         }
     }
-    const isEligible = necessarySubjects.length >= 3 && (required.every(subject => subject.grade <= 4 || IGCSE.includes(subject.grade)) && subjects.every(subject => subject.grade <= 4 || IGCSE.includes(subject.grade)));
+    const isEligible = necessarySubjects.length >= 2 && (required.every(subject => subject.grade <= 4 || IGCSE.includes(subject.grade)) && subjects.every(subject => subject.grade <= 4 || IGCSE.includes(subject.grade)));
 
     return isEligible ? BINGUProgrammes : [];
 

@@ -27,21 +27,21 @@ function Navbar() {
                     <div className="hidden md:flex items-center space-x-3">
 
                         <NavLink
-                            className="py-2 font-medium text-space underline decoration-jonquil text-lg mr-5"
+                            className="py-2 font-medium text-space text-lg mr-5"
                             to="/"
                         >
                             Home
                         </NavLink>
 
                         <NavLink
-                            className="py-2 font-medium text-space underline decoration-jonquil text-lg mr-5"
+                            className="py-2 font-medium text-space text-lg mr-5"
                             to="/generate"
                         >
                             See programmes you are eligible for
                         </NavLink>
 
                         <NavLink
-                            className="py-2 font-medium text-space underline decoration-jonquil text-lg mr-5"
+                            className="py-2 font-medium text-space text-lg mr-5"
                             to="/generate"
                         >
                             Contact us
