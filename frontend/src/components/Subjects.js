@@ -8,7 +8,6 @@ class Subjects extends Component {
         super(props);
         this.state = {
 
-            step: this.props.Step,
             curriculumId: props.curriculumId,
             curriculumSubjects: [],
             selectedSubjects: [],
@@ -18,7 +17,6 @@ class Subjects extends Component {
         }
 
         this.handleSelection = this.handleSelection.bind(this);
-        this.previous = this.previous.bind(this);
 
     }
 
@@ -164,18 +162,6 @@ class Subjects extends Component {
         
     }
 
-    previous(event) {
-
-        event.preventDefault();
-        this.setState({
-            loadIGCSEGrades: false,
-            loadMSCEGrades: false,
-            selectedSubjects: []
-        })
-
-    }
-
-
     render() {
 
         const { curriculumSubjects, errorCode, numberOfSubjects } = this.state;
@@ -254,7 +240,7 @@ class Subjects extends Component {
                     }
 
                    
-                    <button type="submit" className="mt-10 bg-green-700 focus:ring-2 focus:ring-green-500 focus:bg-green-900 text-white px-4 py-1 rounded mx-auto">Submit</button>
+                    <button type="submit" className="mt-10 bg-green-700 focus:ring-2 focus:ring-green-500 focus:bg-green-900 font-semibold text-white px-4 py-1 rounded mx-auto">Select Subjects</button>
 
                 </form>
 

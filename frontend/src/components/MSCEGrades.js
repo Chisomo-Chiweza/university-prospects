@@ -8,27 +8,13 @@ class MSCEGrades extends Component {
         super(props);
         this.state = {
 
-            step: this.props.Step,
             subjects: this.props.subjects,
             subjectsWithGrades: [],
-            errorCode: 0,
-            loadProgrammes: false 
+            errorCode: 0, 
 
         }
 
         this.enterGrades = this.enterGrades.bind(this);
-        this.previous = this.previous.bind(this);
-
-    }
-
-    previous(event) {
-
-        event.preventDefault();
-
-        this.setState({
-            loadProgrammes: false,
-            subjectsWithGrades: []
-        })
 
     }
 
@@ -164,7 +150,7 @@ class MSCEGrades extends Component {
 
                     ))}
 
-                    <button type="submit" className="mt-10 bg-green-700 focus:ring-2 focus:ring-green-500 focus:bg-green-900 text-white px-4 py-1 rounded mx-auto">Submit</button>
+                    <button type="submit" className="mt-10 bg-green-700 focus:ring-2 focus:ring-green-500 focus:bg-green-900 font-semibold text-white px-4 py-1 rounded mx-auto">Enter Grades</button>
 
                 </form>
 

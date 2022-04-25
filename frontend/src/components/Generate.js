@@ -1,4 +1,7 @@
+// Import dependencies
 import { Component } from "react";
+
+// Import components
 import Curriculums from "./Curriculums";
 import Subjects from "./Subjects";
 import IGCSEGrades from "./IGCSEGrades";
@@ -12,7 +15,7 @@ class Generate extends Component {
         super(props);
 
         this.state = {
-            
+
             step: 1,
             loadCurriculums: true,
             curriculum: null,
@@ -22,7 +25,6 @@ class Generate extends Component {
             selectedSubjects: [],
             subjectsWithGrades: [],
             loadProgrammes: false,
-            programmes: [],
 
         }
 
@@ -33,12 +35,11 @@ class Generate extends Component {
         this.setCurriculum = this.setCurriculum.bind(this);
         this.setSubjects = this.setSubjects.bind(this);
         this.setSubjectsWithGrades = this.setSubjectsWithGrades.bind(this);
-        this.getProgrammes = this.getProgrammes.bind(this);
 
     }
 
     _next() {
-        
+
         let currentStep = this.state.step;
         let curriculum = this.state.curriculum;
 
@@ -55,7 +56,7 @@ class Generate extends Component {
                 }
                 if (parseInt(curriculum) === 2) {
                     this.setState({ loadMSCEGrades: true })
-                }            
+                }
                 currentStep = currentStep + 1
                 break;
             case 3:
@@ -64,7 +65,7 @@ class Generate extends Component {
                 }
                 if (parseInt(curriculum) === 2) {
                     this.setState({ loadMSCEGrades: false })
-                }  
+                }
                 this.setState({ loadProgrammes: true })
                 currentStep = currentStep + 1
                 break;
@@ -88,7 +89,7 @@ class Generate extends Component {
                 }
                 if (parseInt(curriculum) === 2) {
                     this.setState({ loadMSCEGrades: true })
-                }  
+                }
                 currentStep = currentStep - 1
                 break;
             case 3:
@@ -97,7 +98,7 @@ class Generate extends Component {
                 }
                 if (parseInt(curriculum) === 2) {
                     this.setState({ loadMSCEGrades: false })
-                } 
+                }
                 this.setState({ loadSubjects: true })
                 currentStep = currentStep - 1
                 break;
@@ -117,9 +118,9 @@ class Generate extends Component {
 
         let currentStep = this.state.step;
 
-        if(currentStep !== 1){
-            return(
-                <button className="mt-6 mr-20 mx-auto p-1 px-4 border-2 border-blue-900 bg-blue-800 text-white rounded" onClick={() => this._prev()}>Previous</button>
+        if (currentStep !== 1) {
+            return (
+                <button className="mt-6 mx-auto p-1 px-4 border-2 border-blue-900 bg-blue-800 text-white rounded" onClick={() => this._prev()}>Previous</button>
             )
         }
 
@@ -130,8 +131,8 @@ class Generate extends Component {
 
         let currentStep = this.state.step;
 
-        if(currentStep !== 4){
-            return(
+        if (currentStep !== 4) {
+            return (
                 <button className="mt-6 mx-auto p-1 px-4 border-2 border-blue-900 bg-blue-800 text-white rounded" onClick={() => this._next()}>Next</button>
             )
         }
@@ -164,94 +165,84 @@ class Generate extends Component {
 
     }
 
-    getProgrammes(recommendedProgrammes) {
-
-        let { programmes } = this.state;
-        programmes = recommendedProgrammes;
-        this.setState({ programmes: programmes }, () => { this.props.sendProgrammes(this.state.programmes) });
-
-    }
-
     render() {
 
         const {
 
             loadCurriculums,
             loadSubjects,
-            curriculum, 
-            loadIGCSEGrades, 
-            loadMSCEGrades, 
-            selectedSubjects, 
-            loadProgrammes, 
-            subjectsWithGrades, 
-            step
+            curriculum,
+            loadIGCSEGrades,
+            loadMSCEGrades,
+            selectedSubjects,
+            loadProgrammes,
+            subjectsWithGrades,
 
         } = this.state;
 
         return (
 
-            <div className="overflow-auto flex flex-col items-center mt-32 md:mx-52">
+            <div className="p-4">
 
-                <h1 className="font-semibold text-4xl m-4">Programme generation</h1>
-                <p className="text-center text-lg">
-                    To be able to generate the programmes you are eligible for, <br /> 
-                    follow the steps outlined below.
-                </p>
+                <div className="overflow-auto flex flex-col items-center mt-32 md:mx-52">
 
-                <div className="flex flex-col items-center">
+                    <h1 className="font-semibold text-4xl m-4">Programme generation</h1>
+                    <p className="text-center text-lg">
+                        To be able to generate the programmes you are eligible for, <br />
+                        follow the steps outlined below.
+                    </p>
 
-                    {
-                        loadCurriculums ?
-                        <Curriculums 
-                            Step={step} 
-                            sendCurriculum={this.setCurriculum}
-                        /> : null
-                    }
-                    
+                    <div className="flex flex-col items-center">
 
-                    {     
-                        loadSubjects ? 
-                        <Subjects
-                            Step={step} 
-                            curriculumId={curriculum} 
-                            sendSubjects={this.setSubjects} 
-                            loadIGCSE={this.loadIGCSEGrades} 
-                            loadMSCE={this.loadMSCEGrades} 
-                        /> : null
-                    }
-                    { 
-                        loadIGCSEGrades ? 
-                        <IGCSEGrades
-                            Step={step} 
-                            subjects={selectedSubjects} 
-                            sendGraded={this.setSubjectsWithGrades}  
-                        /> : null 
-                    }
-                    { 
-                        loadMSCEGrades ? 
-                        <MSCEGrades
-                            Step={step}
-                            subjects={selectedSubjects} 
-                            sendGraded={this.setSubjectsWithGrades}  
-                        /> : null }
-                    { 
-                        loadProgrammes ? 
-                        <DisplayProgrammes
-                            Step={step} 
-                            finalSubjects={subjectsWithGrades} 
-                            sendProgrammes={this.getProgrammes } 
-                        /> : null
-                    }
+                        {
+                            loadCurriculums ?
+                                <Curriculums
+                                    sendCurriculum={this.setCurriculum}
+                                /> : null
+                        }
 
-                    <div className="flex justify-center">
-                        {this.previousButton()}
-                        {this.nextButton()}
+
+                        {
+                            loadSubjects ?
+                                <Subjects
+                                    curriculumId={curriculum}
+                                    sendSubjects={this.setSubjects}
+                                /> : null
+                        }
+                        {
+                            loadIGCSEGrades ?
+                                <IGCSEGrades
+                                    subjects={selectedSubjects}
+                                    sendGraded={this.setSubjectsWithGrades}
+                                /> : null
+                        }
+                        {
+                            loadMSCEGrades ?
+                                <MSCEGrades
+                                    subjects={selectedSubjects}
+                                    sendGraded={this.setSubjectsWithGrades}
+                                /> : null}
+                        {
+                            loadProgrammes ?
+                                <DisplayProgrammes
+                                    finalSubjects={subjectsWithGrades}
+                                    sendProgrammes={this.getProgrammes}
+                                /> : null
+                        }
+
                     </div>
-                    
+
+                </div>
+
+                <div className="flex flex-row md:mx-52">
+
+                    {this.previousButton()}
+                    {this.nextButton()}
 
                 </div>
 
             </div>
+
 
         );
 

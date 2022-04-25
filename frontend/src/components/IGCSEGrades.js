@@ -8,27 +8,13 @@ class IGCSEGrades extends Component {
         super(props);
         this.state = {
 
-            step: this.props.Step,
             subjects: this.props.subjects,
             subjectsWithGrades: [],
             errorCode: 0,
-            loadProgrammes: false 
-
+ 
         }
 
         this.enterGrades = this.enterGrades.bind(this);
-        this.previous = this.previous.bind(this);
-
-    }
-
-    previous(event) {
-
-        event.preventDefault();
-
-        this.setState({
-            loadProgrammes: false,
-            subjectsWithGrades: []
-        })
 
     }
 

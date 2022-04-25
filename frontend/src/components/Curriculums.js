@@ -8,7 +8,6 @@ class Curriculums extends Component {
         super(props);
 
         this.state = {
-            step: this.props.Step,
             curriculums: [],
             selectedCurriculum: null,
         };
