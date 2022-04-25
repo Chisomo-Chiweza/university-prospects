@@ -36,7 +36,7 @@ export function DisplayMUBAS() {
                 Malawi University of Business and Applied Sciences is a public university
                 that was established in 1965 as part of the constituent colleges
                 under the then University of Malawi before delinking to be a standalone
-                university in 2019. It is situated in Blantyre. <a href="http://www.mubas.ac.mw/" target={'_blank'} rel="noreferrer" className="text-space font-medium underline decoration-jonquil">Learn more about KUHES here.</a>
+                university in 2019. It is situated in Blantyre. <a href="http://www.mubas.ac.mw/" target={'_blank'} rel="noreferrer" className="text-space font-medium underline decoration-jonquil">Learn more about MUBAS here.</a>
             </p>
             <p className="text-lg mt-2 text-gray-600">
                 Malawi University of Business and Applied Sciences has 5 faculties:

@@ -50,6 +50,18 @@ class DisplayProgrammes extends Component {
         this.toggleNDATHA = this.toggleNDATHA.bind(this);
         this.toggleMSC = this.toggleMSC.bind(this);
         this.toggleBINGU = this.toggleBINGU.bind(this);
+        this.toggleEduMZUNI = this.toggleEduMZUNI.bind(this);
+        this.toggleHealth = this.toggleHealth.bind(this);
+        this.toggleHuman = this.toggleHuman.bind(this);
+        this.toggleSciMZUNI = this.toggleSciMZUNI.bind(this);
+        this.toggleEnv = this.toggleEnv.bind(this);
+        this.toggleTourism = this.toggleTourism.bind(this);
+        this.toggleAgriculture = this.toggleAgriculture.bind(this);
+        this.toggleDevelopment = this.toggleDevelopment.bind(this);
+        this.toggleFood = this.toggleFood.bind(this);
+        this.toggleNatural = this.toggleNatural.bind(this);
+        this.toggleCollege = this.toggleCollege.bind(this);
+
 
 
     }
@@ -354,6 +366,150 @@ class DisplayProgrammes extends Component {
         }
 
     }
+
+    toggleEduMZUNI(event) {
+
+        event.preventDefault();
+        let content = document.getElementById("edumzuni");
+
+        if (content.classList.contains("hidden")) {
+            content.classList.remove("hidden");
+        } else {
+            content.classList.add("hidden");
+        }
+
+    }
+
+    toggleHealth(event) {
+
+        event.preventDefault();
+        let content = document.getElementById("health");
+
+        if (content.classList.contains("hidden")) {
+            content.classList.remove("hidden");
+        } else {
+            content.classList.add("hidden");
+        }
+
+    }
+
+    toggleHuman(event) {
+
+        event.preventDefault();
+        let content = document.getElementById("human");
+
+        if (content.classList.contains("hidden")) {
+            content.classList.remove("hidden");
+        } else {
+            content.classList.add("hidden");
+        }
+
+    }
+
+    toggleSciMZUNI(event) {
+
+        event.preventDefault();
+        let content = document.getElementById("scimzuni");
+
+        if (content.classList.contains("hidden")) {
+            content.classList.remove("hidden");
+        } else {
+            content.classList.add("hidden");
+        }
+
+    }
+
+    toggleEnv(event) {
+
+        event.preventDefault();
+        let content = document.getElementById("environment");
+
+        if (content.classList.contains("hidden")) {
+            content.classList.remove("hidden");
+        } else {
+            content.classList.add("hidden");
+        }
+
+    }
+
+    toggleTourism(event) {
+
+        event.preventDefault();
+        let content = document.getElementById("tourism");
+
+        if (content.classList.contains("hidden")) {
+            content.classList.remove("hidden");
+        } else {
+            content.classList.add("hidden");
+        }
+
+    }
+
+    toggleAgriculture(event) {
+
+        event.preventDefault();
+        let content = document.getElementById("agriculture");
+
+        if (content.classList.contains("hidden")) {
+            content.classList.remove("hidden");
+        } else {
+            content.classList.add("hidden");
+        }
+
+    }
+
+    toggleDevelopment(event) {
+
+        event.preventDefault();
+        let content = document.getElementById("development");
+
+        if (content.classList.contains("hidden")) {
+            content.classList.remove("hidden");
+        } else {
+            content.classList.add("hidden");
+        }
+
+    }
+
+    toggleFood(event) {
+
+        event.preventDefault();
+        let content = document.getElementById("food");
+
+        if (content.classList.contains("hidden")) {
+            content.classList.remove("hidden");
+        } else {
+            content.classList.add("hidden");
+        }
+
+    }
+
+    toggleNatural(event) {
+
+        event.preventDefault();
+        let content = document.getElementById("natural");
+
+        if (content.classList.contains("hidden")) {
+            content.classList.remove("hidden");
+        } else {
+            content.classList.add("hidden");
+        }
+
+    }
+
+    toggleCollege(event) {
+
+        event.preventDefault();
+        let content = document.getElementById("college");
+
+        if (content.classList.contains("hidden")) {
+            content.classList.remove("hidden");
+        } else {
+            content.classList.add("hidden");
+        }
+
+    }
+
 
 
 
@@ -1019,6 +1175,361 @@ class DisplayProgrammes extends Component {
                                             : null
 
                                     }
+
+
+                                    {
+                                        MZUNI.length > 0 ?
+
+                                            <div className='mb-4 p-6 border shadow-sm border-gray-400'>
+
+                                                {
+                                                    MZUNI.length > 0 ?
+                                                        <div className=''>
+                                                            <h1 className='font-semibold text-lg text-space underline decoration-jonquil'>Mzuzu University (MZUNI)</h1>
+                                                            <p className='mb-2 text-gray-600 font-medium'>
+                                                                You qualified for the following faculties.
+                                                            </p>
+                                                        </div>
+                                                        : null
+                                                }
+
+                                                <div className='mb-4'>
+
+                                                    {
+                                                        MZUNI.filter(programme => programme.facultyid === 20).length > 0 ?
+                                                            <button
+                                                                onClick={this.toggleEduMZUNI}
+                                                                className='font-semibold text-center py-1 w-full bg-white border-2 rounded-t border-space'
+                                                            >
+                                                                Faculty of Education
+                                                            </button>
+                                                            : null
+                                                    }
+
+                                                    <div id="edumzuni" className='hidden mb-2 p-4 border-b border-l border-r mx-auto border-gray-400 rounded-b'>
+
+                                                        {
+                                                            MZUNI.filter(programme => programme.facultyid === 20).length > 0 ?
+                                                                MZUNI.filter(programme => programme.facultyid === 20).map(programme => (
+                                                                    <p>{programme.name}</p>
+                                                                )) : null
+                                                        }
+
+                                                        <Link to={"/MZUNI#edu"} target={"_blank"} className="text-blue-600 underline text-sm text-center">Learn more about the faculty</Link>
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div className='mb-4'>
+
+                                                    {
+                                                        MZUNI.filter(programme => programme.facultyid === 21).length > 0 ?
+                                                            <button
+                                                                onClick={this.toggleHealth}
+                                                                className='font-semibold text-center py-1 w-full bg-white border-2 rounded-t border-space'
+                                                            >
+                                                                Faculty of Health Sciences
+                                                            </button>
+                                                            : null
+                                                    }
+
+                                                    <div id="health" className='hidden mb-2 p-4 border-b border-l border-r mx-auto border-gray-400 rounded-b'>
+
+                                                        {
+                                                            MZUNI.filter(programme => programme.facultyid === 21).length > 0 ?
+                                                                MZUNI.filter(programme => programme.facultyid === 21).map(programme => (
+                                                                    <p>{programme.name}</p>
+                                                                )) : null
+                                                        }
+
+                                                        <Link to={"/MZUNI#hea"} target={"_blank"} className="text-blue-600 underline text-sm text-center">Learn more about the faculty</Link>
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div className='mb-4'>
+
+                                                    {
+                                                        MZUNI.filter(programme => programme.facultyid === 22).length > 0 ?
+                                                            <button
+                                                                onClick={this.toggleHuman}
+                                                                className='font-semibold text-center py-1 w-full bg-white border-2 rounded-t border-space'
+                                                            >
+                                                                Faculty of Humanities
+                                                            </button>
+                                                            : null
+                                                    }
+
+                                                    <div id="human" className='hidden mb-2 p-4 border-b border-l border-r mx-auto border-gray-400 rounded-b'>
+
+                                                        {
+                                                            MZUNI.filter(programme => programme.facultyid === 22).length > 0 ?
+                                                                MZUNI.filter(programme => programme.facultyid === 22).map(programme => (
+                                                                    <p>{programme.name}</p>
+                                                                )) : null
+                                                        }
+
+                                                        <Link to={"/MZUNI#hum"} target={"_blank"} className="text-blue-600 underline text-sm text-center">Learn more about the faculty</Link>
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div className='mb-4'>
+
+                                                    {
+                                                        MZUNI.filter(programme => programme.facultyid === 23).length > 0 ?
+                                                            <button
+                                                                onClick={this.toggleSciMZUNI}
+                                                                className='font-semibold text-center py-1 w-full bg-white border-2 rounded-t border-space'
+                                                            >
+                                                                Faculty of Science, Technology and Innovation
+                                                            </button>
+                                                            : null
+                                                    }
+
+                                                    <div id="scimzuni" className='hidden mb-2 p-4 border-b border-l border-r mx-auto border-gray-400 rounded-b'>
+
+                                                        {
+                                                            MZUNI.filter(programme => programme.facultyid === 23).length > 0 ?
+                                                                MZUNI.filter(programme => programme.facultyid === 23).map(programme => (
+                                                                    <p>{programme.name}</p>
+                                                                )) : null
+                                                        }
+
+                                                        <Link to={"/MZUNI#sci"} target={"_blank"} className="text-blue-600 underline text-sm text-center">Learn more about the faculty</Link>
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div className='mb-4'>
+
+                                                    {
+                                                        MZUNI.filter(programme => programme.facultyid === 24).length > 0 ?
+                                                            <button
+                                                                onClick={this.toggleEnv}
+                                                                className='font-semibold text-center py-1 w-full bg-white border-2 rounded-t border-space'
+                                                            >
+                                                                Faculty of Environmental Science
+                                                            </button>
+                                                            : null
+                                                    }
+
+                                                    <div id="environment" className='hidden mb-2 p-4 border-b border-l border-r mx-auto border-gray-400 rounded-b'>
+
+                                                        {
+                                                            MZUNI.filter(programme => programme.facultyid === 24).length > 0 ?
+                                                                MZUNI.filter(programme => programme.facultyid === 24).map(programme => (
+                                                                    <p>{programme.name}</p>
+                                                                )) : null
+                                                        }
+
+                                                        <Link to={"/MZUNI#env"} target={"_blank"} className="text-blue-600 underline text-sm text-center">Learn more about the faculty</Link>
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div className='mb-4'>
+
+                                                    {
+                                                        MZUNI.filter(programme => programme.facultyid === 25).length > 0 ?
+                                                            <button
+                                                                onClick={this.toggleTourism}
+                                                                className='font-semibold text-center py-1 w-full bg-white border-2 rounded-t border-space'
+                                                            >
+                                                                Faculty of Tourism
+                                                            </button>
+                                                            : null
+                                                    }
+
+                                                    <div id="tourism" className='hidden mb-2 p-4 border-b border-l border-r mx-auto border-gray-400 rounded-b'>
+
+                                                        {
+                                                            MZUNI.filter(programme => programme.facultyid === 25).length > 0 ?
+                                                                MZUNI.filter(programme => programme.facultyid === 25).map(programme => (
+                                                                    <p>{programme.name}</p>
+                                                                )) : null
+                                                        }
+
+                                                        <Link to={"/MZUNI#tou"} target={"_blank"} className="text-blue-600 underline text-sm text-center">Learn more about the faculty</Link>
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                            : null
+
+                                    }
+
+
+                                    {
+                                        LUANAR.length > 0 ?
+
+                                            <div className='mb-4 p-6 border shadow-sm border-gray-400'>
+
+                                                {
+                                                    LUANAR.length > 0 ?
+                                                        <div className=''>
+                                                            <h1 className='font-semibold text-lg text-space underline decoration-jonquil'>Lilongwe University of Agriculture and Natural Resources (LUANAR)</h1>
+                                                            <p className='mb-2 text-gray-600 font-medium'>
+                                                                You qualified for the following faculties.
+                                                            </p>
+                                                        </div>
+                                                        : null
+                                                }
+
+                                                <div className='mb-4'>
+
+                                                    {
+                                                        LUANAR.filter(programme => programme.facultyid === 26).length > 0 ?
+                                                            <button
+                                                                onClick={this.toggleAgriculture}
+                                                                className='font-semibold text-center py-1 w-full bg-white border-2 rounded-t border-space'
+                                                            >
+                                                                Faculty of Agriculture
+                                                            </button>
+                                                            : null
+                                                    }
+
+                                                    <div id="agriculture" className='hidden mb-2 p-4 border-b border-l border-r mx-auto border-gray-400 rounded-b'>
+
+                                                        {
+                                                            LUANAR.filter(programme => programme.facultyid === 26).length > 0 ?
+                                                                LUANAR.filter(programme => programme.facultyid === 26).map(programme => (
+                                                                    <p>{programme.name}</p>
+                                                                )) : null
+                                                        }
+
+                                                        <Link to={"/LUANAR#agr"} target={"_blank"} className="text-blue-600 underline text-sm text-center">Learn more about the faculty</Link>
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div className='mb-4'>
+
+                                                    {
+                                                        LUANAR.filter(programme => programme.facultyid === 27).length > 0 ?
+                                                            <button
+                                                                onClick={this.toggleDevelopment}
+                                                                className='font-semibold text-center py-1 w-full bg-white border-2 rounded-t border-space'
+                                                            >
+                                                                Faculty of Development Studies
+                                                            </button>
+                                                            : null
+                                                    }
+
+                                                    <div id="development" className='hidden mb-2 p-4 border-b border-l border-r mx-auto border-gray-400 rounded-b'>
+
+                                                        {
+                                                            LUANAR.filter(programme => programme.facultyid === 27).length > 0 ?
+                                                                LUANAR.filter(programme => programme.facultyid === 27).map(programme => (
+                                                                    <p>{programme.name}</p>
+                                                                )) : null
+                                                        }
+
+                                                        <Link to={"/LUANAR#dev"} target={"_blank"} className="text-blue-600 underline text-sm text-center">Learn more about the faculty</Link>
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div className='mb-4'>
+
+                                                    {
+                                                        LUANAR.filter(programme => programme.facultyid === 28).length > 0 ?
+                                                            <button
+                                                                onClick={this.toggleFood}
+                                                                className='font-semibold text-center py-1 w-full bg-white border-2 rounded-t border-space'
+                                                            >
+                                                                Faculty of Food and Human Sciences
+                                                            </button>
+                                                            : null
+                                                    }
+
+                                                    <div id="food" className='hidden mb-2 p-4 border-b border-l border-r mx-auto border-gray-400 rounded-b'>
+
+                                                        {
+                                                            LUANAR.filter(programme => programme.facultyid === 28).length > 0 ?
+                                                                LUANAR.filter(programme => programme.facultyid === 28).map(programme => (
+                                                                    <p>{programme.name}</p>
+                                                                )) : null
+                                                        }
+
+                                                        <Link to={"/LUANAR#foo"} target={"_blank"} className="text-blue-600 underline text-sm text-center">Learn more about the faculty</Link>
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div className='mb-4'>
+
+                                                    {
+                                                        LUANAR.filter(programme => programme.facultyid === 29).length > 0 ?
+                                                            <button
+                                                                onClick={this.toggleNatural}
+                                                                className='font-semibold text-center py-1 w-full bg-white border-2 rounded-t border-space'
+                                                            >
+                                                                Faculty of Natural Sciences
+                                                            </button>
+                                                            : null
+                                                    }
+
+                                                    <div id="natural" className='hidden mb-2 p-4 border-b border-l border-r mx-auto border-gray-400 rounded-b'>
+
+                                                        {
+                                                            LUANAR.filter(programme => programme.facultyid === 29).length > 0 ?
+                                                                LUANAR.filter(programme => programme.facultyid === 29).map(programme => (
+                                                                    <p>{programme.name}</p>
+                                                                )) : null
+                                                        }
+
+                                                        <Link to={"/LUANAR#nat"} target={"_blank"} className="text-blue-600 underline text-sm text-center">Learn more about the faculty</Link>
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div className='mb-4'>
+
+                                                    {
+                                                        LUANAR.filter(programme => programme.facultyid === 30).length > 0 ?
+                                                            <button
+                                                                onClick={this.toggleCollege}
+                                                                className='font-semibold text-center py-1 w-full bg-white border-2 rounded-t border-space'
+                                                            >
+                                                                Natural Resources College
+                                                            </button>
+                                                            : null
+                                                    }
+
+                                                    <div id="college" className='hidden mb-2 p-4 border-b border-l border-r mx-auto border-gray-400 rounded-b'>
+
+                                                        {
+                                                            LUANAR.filter(programme => programme.facultyid === 30).length > 0 ?
+                                                                LUANAR.filter(programme => programme.facultyid === 30).map(programme => (
+                                                                    <p>{programme.name}</p>
+                                                                )) : null
+                                                        }
+
+                                                        <Link to={"/LUANAR#col"} target={"_blank"} className="text-blue-600 underline text-sm text-center">Learn more about the faculty</Link>
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                            : null
+
+                                    }
+
 
 
                                 </div>

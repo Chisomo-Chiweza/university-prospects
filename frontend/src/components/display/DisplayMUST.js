@@ -32,7 +32,7 @@ export function DisplayMUST() {
 
             <p className="text-lg text-gray-600">
                 The Malawi University of Science and Technology is a public university
-                that was established in 2012. It is situated in Thyolo, Blantyre. <a href="https://www.must.ac.mw/" target={'_blank'} rel="noreferrer" className="text-space font-medium underline decoration-jonquil">Learn more about UNIMA here.</a>
+                that was established in 2012. It is situated in Thyolo, Blantyre. <a href="https://www.must.ac.mw/" target={'_blank'} rel="noreferrer" className="text-space font-medium underline decoration-jonquil">Learn more about MUST here.</a>
             </p>
             <p className="text-lg mt-2 text-gray-600">
                 Malawi University of Science and Technology has 4 faculties:
