@@ -186,12 +186,6 @@ class Generate extends Component {
 
                 <div className="overflow-auto flex flex-col items-center mt-32 md:mx-52">
 
-                    <h1 className="font-semibold text-4xl m-4">Programme generation</h1>
-                    <p className="text-center text-lg">
-                        To be able to generate the programmes you are eligible for, <br />
-                        follow the steps outlined below.
-                    </p>
-
                     <div className="flex flex-col items-center">
 
                         {
