@@ -5,13 +5,13 @@ function Navbar() {
 
     return (
 
-        <nav className=" border-b border-gray-200 sticky top-0 z-10 backdrop-filter backdrop-blur-lg bg-opacity-20">
+        <nav className="bg-white border-b-2 shadow-sm border-gray-200 top-0 z-10">
 
             <div className="max-w-6xl mx-auto px-4">
 
                 <div className="flex justify-between">
 
-                    <NavLink
+                <NavLink
                         className="flex space-x-7"
                         to="/"
                     >
@@ -21,40 +21,27 @@ function Navbar() {
                                 <span className="text-space">University</span> Prospects
                             </span>
                         </div>
-
                     </NavLink>
-
                     <div className="hidden md:flex items-center gap-8 bg-clip-padding">
-
                         <NavLink
                             className="py-2 font-medium text-space active:text-jonquil hover:text-2xl"
                             to="/"
                         >
                             Home
                         </NavLink>
-
                         <NavLink
                             className="py-2 font-medium text-space active:text-jonquil hover:text-2xl"
                             to="/contacts"
                         >
                             Contacts 
                         </NavLink>
-
                         <NavLink
                             className="py-2 font-medium text-space active:text-jonquil hover:text-2xl"
                             to="/about"
                         >
-                            About 
+                            About Us
                         </NavLink>
-
                         
-                        <NavLink
-                            className=" py-2 font-medium text-space active:text-jonquil hover:text-2xl"
-                            to="/home"
-                        >
-                            Get Started
-                        </NavLink>
-
                     </div>
                     
 

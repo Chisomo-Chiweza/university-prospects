@@ -8,8 +8,9 @@ import generateMZUNI from './MZUNI';
 export function generateProgrammes(subjects, programmes) {
 
     const recommendedProgrammes = [];
+    const IGCSE = ['A+', 'A', 'B', 'C'];
     
-    let temp = generateKUHES(subjects, programmes);
+    let temp = generateKUHES(subjects, programmes, IGCSE);
     if (temp.length > 0) {
 
         for (let i = 0; i < temp.length; i++) {
@@ -22,7 +23,7 @@ export function generateProgrammes(subjects, programmes) {
 
     }
 
-    temp = generateMUBAS(subjects, programmes);
+    temp = generateMUBAS(subjects, programmes, IGCSE);
     if (temp.length > 0) {
 
         for (let i = 0; i < temp.length; i++) {
@@ -35,7 +36,7 @@ export function generateProgrammes(subjects, programmes) {
 
     }
 
-    temp = generateMUST(subjects, programmes);
+    temp = generateMUST(subjects, programmes, IGCSE);
     if (temp.length > 0) {
 
         for (let i = 0; i < temp.length; i++) {
@@ -48,7 +49,7 @@ export function generateProgrammes(subjects, programmes) {
 
     }
     
-    temp = generateLUANAR(subjects, programmes);
+    temp = generateLUANAR(subjects, programmes, IGCSE);
     if (temp.length > 0) {
 
         for (let i = 0; i < temp.length; i++) {
@@ -61,7 +62,7 @@ export function generateProgrammes(subjects, programmes) {
 
     }
 
-    temp = generateUNIMA(subjects, programmes);
+    temp = generateUNIMA(subjects, programmes, IGCSE);
     if (temp.length > 0) {
 
         for (let i = 0; i < temp.length; i++) {
@@ -74,7 +75,7 @@ export function generateProgrammes(subjects, programmes) {
 
     }
 
-    temp = generateMZUNI(subjects, programmes);
+    temp = generateMZUNI(subjects, programmes, IGCSE);
     if (temp.length > 0) {
 
         for (let i = 0; i < temp.length; i++) {
