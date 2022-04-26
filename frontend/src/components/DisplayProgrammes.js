@@ -553,7 +553,7 @@ class DisplayProgrammes extends Component {
                                     {
                                         KUHES.length > 0 ?
 
-                                            <div className='mb-4 p-6 border shadow-sm border-gray-400'>
+                                            <div className='mb-4 p-6 border shadow-sm border-gray-400 bg-white'>
 
                                                 {
                                                     KUHES.length > 0 ?
@@ -746,7 +746,7 @@ class DisplayProgrammes extends Component {
                                     {
                                         UNIMA.length > 0 ?
 
-                                            <div className='mb-4 p-6 border shadow-sm border-gray-400'>
+                                            <div className='mb-4 p-6 border shadow-sm border-gray-400 bg-white'>
 
                                                 {
                                                     UNIMA.length > 0 ?
@@ -882,7 +882,7 @@ class DisplayProgrammes extends Component {
                                     {
                                         MUBAS.length > 0 ?
 
-                                            <div className='mb-4 p-6 border shadow-sm border-gray-400'>
+                                            <div className='mb-4 p-6 border shadow-sm border-gray-400 bg-white'>
 
                                                 {
                                                     MUBAS.length > 0 ?
@@ -1045,7 +1045,7 @@ class DisplayProgrammes extends Component {
                                     {
                                         MUST.length > 0 ?
 
-                                            <div className='mb-4 p-6 border shadow-sm border-gray-400'>
+                                            <div className='mb-4 p-6 border shadow-sm border-gray-400 bg-white'>
 
                                                 {
                                                     MUST.length > 0 ?
@@ -1180,7 +1180,7 @@ class DisplayProgrammes extends Component {
                                     {
                                         MZUNI.length > 0 ?
 
-                                            <div className='mb-4 p-6 border shadow-sm border-gray-400'>
+                                            <div className='mb-4 p-6 border shadow-sm border-gray-400 bg-white'>
 
                                                 {
                                                     MZUNI.length > 0 ?
@@ -1371,7 +1371,7 @@ class DisplayProgrammes extends Component {
                                     {
                                         LUANAR.length > 0 ?
 
-                                            <div className='mb-4 p-6 border shadow-sm border-gray-400'>
+                                            <div className='mb-4 p-6 border shadow-sm border-gray-400 bg-white'>
 
                                                 {
                                                     LUANAR.length > 0 ?

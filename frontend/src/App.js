@@ -16,7 +16,7 @@ export default function App() {
 
     return (
 
-        <div className="flex flex-col h-max">
+        <div className="flex flex-col h-full bg-ivory">
             
             <BrowserRouter>
 

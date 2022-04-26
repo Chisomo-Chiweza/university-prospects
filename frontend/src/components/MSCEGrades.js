@@ -10,7 +10,7 @@ class MSCEGrades extends Component {
 
             subjects: this.props.subjects,
             subjectsWithGrades: [],
-            errorCode: 0, 
+            errorCode: 0,
 
         }
 
@@ -114,45 +114,61 @@ class MSCEGrades extends Component {
 
         return (
 
-            <div className='overflow-auto md:mx-auto mt-4 p-10 border border-gray-300 rounded bg-ivory'>
+            <div>
 
-                <h1 className="font-semibold text-lg text-center">Step 2</h1>
-                <p className='text-base text-center'>Enter the grade you got using one of the options provided</p>
+                <h1 className='font-semibold text-6xl text-center text-space'>Programme <span className='text-jonquil'>Generation</span></h1>
+                <h1 className="mt-4 mx-auto mb-6 font-semibold text-gray-700 text-2xl text-center">
+                    To generate the programmes you are eligible for, <br /> follow the steps below <br />
+                </h1>
 
-                <Errors errorCode={errorCode} />
+                <div className='overflow-auto md:mx-auto mt-4 p-10 border border-gray-300 rounded bg-white'>
 
-                <form onSubmit={this.enterGrades} className="mt-4 grid grid-cols-2 gap-4">
+                    <h1 className="font-semibold text-xl text-space text-center mb-2">Step 2</h1>
+                    <p className='text-base text-center text-gray-600 mb-6'>
+                        Select your grade from the options provided. <br />
+                        <span className='text-red-500 font-semibold'>
+                            Note: The minimum grade you need to qualify <br />
+                            for any programme is grade point 6. Anything <br />
+                            higher makes you ineligible for any programme.
+                        </span>
+                    </p>
 
-                    {subjects.map((subject, index) => (
+                    <Errors errorCode={errorCode} />
+
+                    <form onSubmit={this.enterGrades} className="mt-4 grid grid-cols-2 gap-4">
+
+                        {subjects.map((subject, index) => (
 
 
-                        <div key={index}>
+                            <div key={index} className="">
 
 
-                            <label key={subject.name} htmlFor={subject.id} className="text-sm">{subject.name}</label><br />
-                            <select
-                                key={subject.id}
-                                id={`input # ${subject.id}`}
-                                className="mb-4 p-2 text-gray-500 text-sm rounded border-2 border-yellow-600 bg-yellow-100 required:border-red-600 required:bg-red-100"
-                                required={false}
-                            >
-                                <option value="" selected disabled>Select Point number</option>
-                                <option value={1}>1</option>
-                                <option value={2}>2</option>
-                                <option value={3}>3</option>
-                                <option value={4}>4</option>
-                                <option value={5}>5</option>
-                                <option value={6}>6</option>
+                                <label key={subject.name} htmlFor={subject.id} className="text-sm">{subject.name}</label><br />
+                                <select
+                                    key={subject.id}
+                                    id={`input # ${subject.id}`}
+                                    className="mb-4 p-2 text-gray-500 text-sm rounded border-2 border-yellow-600 bg-yellow-100 required:border-red-600 required:bg-red-100"
+                                    required={false}
+                                >
+                                    <option value="" selected disabled>Select Point number</option>
+                                    <option value={1}>1</option>
+                                    <option value={2}>2</option>
+                                    <option value={3}>3</option>
+                                    <option value={4}>4</option>
+                                    <option value={5}>5</option>
+                                    <option value={6}>6</option>
 
-                            </select>
-                            
-                        </div>
+                                </select>
 
-                    ))}
+                            </div>
 
-                    <button type="submit" className="mt-10 bg-green-700 focus:ring-2 focus:ring-green-500 focus:bg-green-900 font-semibold text-white px-4 py-1 rounded mx-auto">Enter Grades</button>
+                        ))}
 
-                </form>
+                        <button type="submit" className="mt-10 bg-green-700 focus:ring-2 focus:ring-green-500 focus:bg-green-900 font-semibold text-white px-4 py-1 rounded mx-auto">Enter Grades</button>
+
+                    </form>
+
+                </div>
 
             </div>
 
