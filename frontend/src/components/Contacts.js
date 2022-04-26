@@ -4,7 +4,7 @@ import React from "react"
 function Contacts (){
     return (
         <div class="flex w-full min-hs-screen text- justify-center items-center">
-            <div class="flex flex-col bg-space space-y-4 bg-cyan-700 w-full max-w-4xl rounded-xl shadow-lg text-white">
+            <div class="flex flex-col bg-ivory space-y-4 bg-cyan-700 w-full max-w-4xl rounded-xl shadow-lg text-space">
                <div class="flex flex-col space-y-8 justify-between">
                <div class="font-bold text-4xl tracking-wide p-8 text-center">
                    <h1>Contact Us</h1>
@@ -36,7 +36,7 @@ function Contacts (){
                     <div class="bg-yellow-100 rounded-xl shadow-lg p-8 text-space">
                         <form action="" class="flex flex-col space-y-4">
                             <div>
-                                <label for="" class="text-sm">Your name</label>
+                                <label for="" class="text-sm">Your Full name</label>
                                 <input 
                                     type="text" 
                                     placeholder="Your name" 

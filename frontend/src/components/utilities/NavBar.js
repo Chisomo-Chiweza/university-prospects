@@ -5,7 +5,7 @@ function Navbar() {
 
     return (
 
-        <nav className="bg-slate-700 border-b border-gray-200 sticky top-0 z-10 backdrop-filter backdrop-blur-lg bg-opacity-20">
+        <nav className=" border-b border-gray-200 sticky top-0 z-10 backdrop-filter backdrop-blur-lg bg-opacity-20">
 
             <div className="max-w-6xl mx-auto px-4">
 
