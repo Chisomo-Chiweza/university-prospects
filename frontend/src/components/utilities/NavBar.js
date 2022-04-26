@@ -40,13 +40,6 @@ function Navbar() {
                             See programmes you are eligible for
                         </NavLink>
 
-                        <NavLink
-                            className="py-2 font-medium text-space text-lg mr-5"
-                            to="/generate"
-                        >
-                            Contact us
-                        </NavLink>
-
                     </div>
 
                     <div className="md:hidden flex items-center">
